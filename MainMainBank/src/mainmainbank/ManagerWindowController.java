@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -43,7 +44,8 @@ public class ManagerWindowController extends Bank implements Initializable {
     private final int fieldsSize = 10;
     //for welcome message
     @FXML private Label session_username;
-    
+    @FXML private Label passStatus;
+
     //for setters (tab)
     @FXML private TextField setInitialDeposit;
     @FXML private TextField setMaintainingBalance;
@@ -215,13 +217,14 @@ public class ManagerWindowController extends Bank implements Initializable {
 
     //for creation of teller account
     @FXML
-    void checkPassword(ActionEvent event) throws AWTException {
+    void checkPassword(KeyEvent event) throws AWTException {
         Robot robot = new Robot();//simulates press of f3
+        robot.keyPress(114); //f3 key
 
-        if(tbRetypePassword.getText().equals(tbPassword)){
-
+        if(tbRetypePassword.getText().equals(tbPassword.getText())){
+            passStatus.setText("Password match");
         }else{
-            robot.keyPress(114); //f3 key
+            passStatus.setText("Password not match");
         }
     }
 

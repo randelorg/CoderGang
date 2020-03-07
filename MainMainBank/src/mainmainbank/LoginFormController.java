@@ -51,7 +51,7 @@ public class LoginFormController extends Bank implements Initializable {
             {
                 case 0: //manager
                         Parent root = FXMLLoader.load(getClass().getResource("ManagerWindow.fxml"));
-                        Scene scene = new Scene(root,1034,709);
+                        Scene scene = new Scene(root,1034,717);
                         Stage managerWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
                         managerWindow.setScene(scene);
                         managerWindow.setTitle("Manager window");
