@@ -8,7 +8,9 @@ package mainmainbank;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.AbstractList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -108,8 +110,6 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private TableColumn<Client, Void> col_remove1;
     @FXML private TableColumn<Client, Void> col_Peek1;
 
-    private FilteredList<Teller> filteredList = new FilteredList<>(tellers, p -> true);
-    private SortedList<Teller> sortedList = new SortedList<>(filteredList);
     /**
      * Initializes the controller class.
      * @param url
@@ -308,9 +308,8 @@ public class ManagerWindowController extends Bank implements Initializable {
     private void refreshDataTeller(){ //will load again the table data
         tableTeller.getItems().clear();
         tellers.clear(); //clears the observable list -> tellers
-        //this.clearFilteredList();
         this.populateTellerTable(); //will fill data in the table
-        //this.searchTeller();
+        this.searchTeller();
     }
 
     @FXML
@@ -542,13 +541,8 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     /* searching algol */
-    private void clearFilteredList(){
-        filteredList.clear();
-        sortedList.clear();
-    }
-
     private void searchTeller(){
-
+        FilteredList<Teller> filteredList = new FilteredList<>(tellers, p -> true);
         omniBox.textProperty().addListener((observable, oldValue, newValue) ->{
             filteredList.setPredicate(teller -> {
                 if ((newValue == null || newValue.isEmpty())){
@@ -568,6 +562,7 @@ public class ManagerWindowController extends Bank implements Initializable {
             });
         });
 
+        SortedList<Teller> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(tableTeller.comparatorProperty());
         tableTeller.setItems(sortedList);
     }
@@ -582,10 +577,10 @@ public class ManagerWindowController extends Bank implements Initializable {
             Stage mainStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             mainStage.setScene(scene);
             mainStage.setTitle("Banking System v.2");
+            mainStage.setResizable(false);
             mainStage.show();
         }
         catch(IOException e){}
     }
-
 
 }
