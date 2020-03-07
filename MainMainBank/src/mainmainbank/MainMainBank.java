@@ -37,6 +37,7 @@ public class MainMainBank extends Application{
             Scene scene = new Scene(root,600,396);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Banking System v.2");
+            primaryStage.setResizable(false);
             primaryStage.show();
         }
         catch(IOException e){}

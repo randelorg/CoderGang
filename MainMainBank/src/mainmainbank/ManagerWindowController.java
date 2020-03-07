@@ -322,7 +322,6 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     private void updateTeller(){
-
         Callback<TableColumn<Teller, Void>, TableCell<Teller, Void>> cellFactory = ( TableColumn<Teller, Void> param) -> {
              TableCell<Teller, Void> cell = new TableCell<Teller, Void>() {
 
@@ -337,6 +336,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                             Parent root1 = (Parent) fxmlLoader.load();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(root1));
+                            stage.setResizable(false);
                             stage.show();
                         } catch(Exception e) {
                             e.printStackTrace();
@@ -371,7 +371,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                         Teller tel = getTableView().getItems().get(getIndex());
                         System.out.println(tel.getTellerID());
                         ManagerWindowController.super.removeTellerACcount(String.valueOf(tel.getTellerID())); //remove the teller account
-                        JOptionPane.showMessageDialog(null, tel.getFirstName() + " " + tel.getLastname() +  " is removed, please refresh the table", "Success",
+                        JOptionPane.showMessageDialog(null, tel.getFirstName() + " " + tel.getLastname() +  " was removed, please refresh the table", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     });
                 }
@@ -402,7 +402,17 @@ public class ManagerWindowController extends Bank implements Initializable {
                     btnPeek.setOnAction((ActionEvent event) -> {
                         Teller tel = getTableView().getItems().get(getIndex());
                         System.out.println(tel.getTellerID());
-
+                        Bank.setSessionBackId(String.valueOf(tel.getTellerID()));
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PeekAccount.fxml"));
+                            Parent root1 = (Parent) fxmlLoader.load();
+                            Stage peek = new Stage();
+                            peek.setScene(new Scene(root1, 335, 600));
+                            peek.setResizable(false);
+                            peek.show();
+                        } catch(Exception e) {
+                            e.printStackTrace();
+                        }
                     });
                 }
 
@@ -467,7 +477,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                         Client client = getTableView().getItems().get(getIndex());
                         System.out.println(client.getClientID());
                         ManagerWindowController.super.removeTellerACcount(String.valueOf(client.getClientID())); //remove the teller account
-                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getLastname() +  " is removed, please refresh the table",
+                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getLastname() +  " was removed, please refresh the table",
                                 "Success", JOptionPane.INFORMATION_MESSAGE);
                     });
                 }
@@ -498,7 +508,17 @@ public class ManagerWindowController extends Bank implements Initializable {
                     btnPeek.setOnAction((ActionEvent event) -> {
                         Client client = getTableView().getItems().get(getIndex());
                         System.out.println(client.getClientID());
-
+                        Bank.setSessionBackId(String.valueOf(client.getClientID()));
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PeekAccount.fxml"));
+                            Parent root1 = (Parent) fxmlLoader.load();
+                            Stage peek = new Stage();
+                            peek.setScene(new Scene(root1, 650, 600));
+                            peek.setResizable(false);
+                            peek.show();
+                        } catch(Exception e) {
+                            e.printStackTrace();
+                        }
                     });
                 }
 
@@ -519,14 +539,6 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     /* searching algol */
-    @FXML
-    void searchDataTeller(ActionEvent event) throws AWTException {
-        Robot robot = new Robot();//simulates press of f3
-
-        robot.keyPress(114); //f3 key
-        this.searchTeller();
-    }
-
     private void clearFilteredList(){
         filteredList.clear();
         sortedList.clear();

@@ -55,6 +55,7 @@ public class LoginFormController extends Bank implements Initializable {
                         Stage managerWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
                         managerWindow.setScene(scene);
                         managerWindow.setTitle("Manager window");
+                        managerWindow.setResizable(false);
                         managerWindow.show();
                     break;
                 case 1: //teller

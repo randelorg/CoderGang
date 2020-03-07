@@ -16,6 +16,7 @@ public class Client extends Person {
 
     private double creditAMount;
     private double debtCredit;
+    private double monthlyPayment;
     private int age;
 
     public Client(){}
@@ -59,4 +60,11 @@ public class Client extends Person {
         this.debtCredit = debtCredit;
     }
 
+    public double getMonthlyPayment() {
+        return monthlyPayment;
+    }
+
+    public void setMonthlyPayment(double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
+    }
 }

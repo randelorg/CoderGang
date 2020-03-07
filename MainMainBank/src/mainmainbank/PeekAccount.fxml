@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmainbank.PeekAccount">
+   <children>
+      <VBox alignment="CENTER" layoutX="25.0" layoutY="57.0" prefHeight="548.0" prefWidth="300.0" spacing="20.0">
+         <padding>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </padding>
+         <children>
+            <TextField fx:id="IdentityNumber" editable="false" promptText="ID">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="firstName" editable="false" promptText="First name">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="middleName" editable="false" promptText="Middle name">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="lastName" editable="false" promptText="Last name">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="extensionName" editable="false" promptText="Extension name">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="age" editable="false" promptText="Age">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="gender" editable="false" promptText="Gender">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="address" editable="false" promptText="Address">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="maritalStatus" editable="false" promptText="Marital status">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="citizenship" editable="false" promptText="Citizenship">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <Label layoutX="32.0" layoutY="14.0" prefHeight="47.0" prefWidth="103.0" text="Profile">
+         <font>
+            <Font name="Microsoft Sans Serif" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="348.0" layoutY="13.0" prefHeight="47.0" prefWidth="118.0" text="Assets">
+         <font>
+            <Font name="Microsoft Sans Serif" size="36.0" />
+         </font>
+      </Label>
+      <VBox layoutX="336.0" layoutY="55.0" prefHeight="250.0" prefWidth="300.0" spacing="20.0">
+         <padding>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </padding>
+         <children>
+            <TextField fx:id="savings" editable="false" promptText="Savings balance">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="credit" editable="false" promptText="Credit available">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="debt" editable="false" promptText="Debt from credit">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="monthlyPayment" editable="false" promptText="Monthly payment">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
