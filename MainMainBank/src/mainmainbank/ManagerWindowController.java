@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -120,6 +122,8 @@ public class ManagerWindowController extends Bank implements Initializable {
         initSettings();
         initDefault();
         initGeneratorID();
+
+        searchTeller();
     }
 
     private void initSettings(){
@@ -512,6 +516,35 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_Peek1.setCellFactory(cellFactory);
     }
 
+    /* searching algol */
+    private void searchTeller(){
+        FilteredList<Teller> filteredList = new FilteredList<>(tellers, p -> true);
+
+        omniBox.textProperty().addListener((observable, oldValue, newValue) ->{
+            filteredList.setPredicate(teller -> {
+                if ((newValue == null || newValue.isEmpty())){
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(teller.getFirstName().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(teller.getLastname().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }else if(String.valueOf(teller.getTellerID()).toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+
+                return false;
+            });
+        });
+
+        SortedList<Teller> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(tvsearchTeller.comparatorProperty());
+        tvsearchTeller.setItems(sortedList);
+    }
+
     //logout button
     @FXML
     void logout(ActionEvent event) {
@@ -526,5 +559,6 @@ public class ManagerWindowController extends Bank implements Initializable {
         }
         catch(IOException e){}
     }
+
 
 }
