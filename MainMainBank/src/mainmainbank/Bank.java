@@ -263,18 +263,27 @@ public class Bank implements IBank{
         
     }
 
+    private String setUpUsername(String fname, String lname){
+        return fname.substring(0, 1).toUpperCase() + fname.substring(1).concat(lname.substring(0, 1).toUpperCase() + lname.substring(1));
+    }
+
     @Override //for manager
-    public void updateTellerProfile(String[] fields) {
-        for (Teller teller: Bank.ldTeller){
-            if(Bank.getSessionIdTeller().equals(teller.getTellerID())){
-                teller.setFirstName(fields[0]);
-                teller.setMiddleName(fields[1]);
-                teller.setLastName(fields[2]);
-                teller.setExtensionName(fields[3]);
-                teller.setAddress(fields[4]);
-                break;
+    public String updateTellerProfile(String[] fields) {
+
+        for (Teller tel: Bank.ldTeller){
+            if(Bank.getSessionIdTeller().equals(String.valueOf(tel.getTellerID()))){
+                tel.setFirstName(fields[0]);
+                tel.setMiddleName(fields[1]);
+                tel.setLastName(fields[2]);
+                tel.setExtensionName(fields[3]);
+                tel.setAddress(fields[4]);
+                tel.setUsername(this.setUpUsername(tel.getFirstName(),tel.getLastName()));
+                System.out.println(tel.getUsername());
+                return "Updated";
             }
         }
+
+        return "Failed";
     }
 
     @Override //for teller and manager

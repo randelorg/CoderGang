@@ -91,6 +91,7 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private TableColumn<Teller, Integer> tvAge;
     @FXML private TableColumn<Teller, Void> col_Update;
     @FXML private TableColumn<Teller, Void> col_remove;
+    @FXML private TableColumn<Teller, Void> col_Peek;
 
      /**
      * Initializes the controller class.
@@ -291,7 +292,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         tellers.clear(); //clears the observable list -> tellers
         this.populateTable(); //will fill data in the table
     }
-    }
+
 
     @FXML
     void refreshTable(ActionEvent event) {
@@ -300,10 +301,9 @@ public class ManagerWindowController extends Bank implements Initializable {
         if(!Bank.ldTeller.isEmpty()){
             this.updateButtonToTable(); //add update button
             this.removeButtonToTable(); //add remove button
-            this.refreshData();
-        }else{
-            this.refreshData();
+            this.peekButtonToTable();
         }
+        this.refreshData();
     }
 
     private void updateButtonToTable(){
@@ -317,7 +317,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                 {
                     btnUpdate.setOnAction((ActionEvent event) -> {
                         Teller tel = getTableView().getItems().get(getIndex());
-                        System.out.println(tel.getTellerID());
+                        //System.out.println(tel.getTellerID());
                         Bank.setSessionIdTeller(String.valueOf(tel.getTellerID()));
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateWindow.fxml"));
@@ -377,6 +377,36 @@ public class ManagerWindowController extends Bank implements Initializable {
         };
 
         col_remove.setCellFactory(cellFactory);
+    }
+
+    private void peekButtonToTable(){
+
+        Callback<TableColumn<Teller, Void>, TableCell<Teller, Void>> cellFactory = ( TableColumn<Teller, Void> param) -> {
+            TableCell<Teller, Void> cell = new TableCell<Teller, Void>() {
+
+                private final Button btnPeek = new Button("Peek");
+                {
+                    btnPeek.setOnAction((ActionEvent event) -> {
+                        Teller tel = getTableView().getItems().get(getIndex());
+                        System.out.println(tel.getTellerID());
+
+                    });
+                }
+
+                @Override
+                public void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(btnPeek);
+                    }
+                }
+            };
+            return cell;
+        };
+
+        col_Peek.setCellFactory(cellFactory);
     }
 
     //logout button

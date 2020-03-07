@@ -19,7 +19,7 @@ public interface IBank {
     String createAccoutTeller(String[] tellerFields); //creates account for the teller
     void searchClientAccount(); //search for the client account
     void searchTellerAccount(); //search for the teller account
-    void updateTellerProfile(String[] fields); //updates teller profile
+    String updateTellerProfile(String[] fields); //updates teller profile
     void displayClientAccount(); //display all the client profiles
     void displayTellerAccount(); //display all the teller profiles
     void removeClientAccount(); //remove/delete the client account
