@@ -101,7 +101,6 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private TableColumn<Client, String> col_clientLastName;
     @FXML private TableColumn<Client, Double> col_clientSavings;
     @FXML private TableColumn<Client, Double> col_clientDebt;
-    @FXML private TableColumn<Client, Void> col_Update1;
     @FXML private TableColumn<Client, Void> col_remove1;
     @FXML private TableColumn<Client, Void> col_Peek1;
 
@@ -309,24 +308,24 @@ public class ManagerWindowController extends Bank implements Initializable {
     void refreshTableTeller(ActionEvent event) {
         this.initColsTeller();
         if(!Bank.ldTeller.isEmpty()){
-            this.updateButtonToTable(); //add update button
-            this.removeButtonToTable(); //add remove button
-            this.peekButtonToTable(); //peek button
+            this.updateTeller(); //add update button
+            this.removeTeller(); //add remove button
+            this.peekTeller(); //peek button
         }
         this.refreshDataTeller();
     }
 
-    private void updateButtonToTable(){
+    private void updateTeller(){
 
         Callback<TableColumn<Teller, Void>, TableCell<Teller, Void>> cellFactory = ( TableColumn<Teller, Void> param) -> {
              TableCell<Teller, Void> cell = new TableCell<Teller, Void>() {
-                
+
                 private final Button btnUpdate = new Button("Update");
                 {
                     btnUpdate.setOnAction((ActionEvent event) -> {
                         Teller tel = getTableView().getItems().get(getIndex());
                         //System.out.println(tel.getTellerID());
-                        Bank.setSessionIdTeller(String.valueOf(tel.getTellerID()));
+                        Bank.setSessionBackId(String.valueOf(tel.getTellerID()));
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateWindow.fxml"));
                             Parent root1 = (Parent) fxmlLoader.load();
@@ -338,7 +337,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                         }
                     });
                 }
-                
+
                 @Override
                 public void updateItem(Void item, boolean empty) {
                     super.updateItem(item, empty);
@@ -355,7 +354,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_Update.setCellFactory(cellFactory);
     }
 
-    private void removeButtonToTable(){
+    private void removeTeller(){
 
         Callback<TableColumn<Teller, Void>, TableCell<Teller, Void>> cellFactory = ( TableColumn<Teller, Void> param) -> {
             TableCell<Teller, Void> cell = new TableCell<Teller, Void>() {
@@ -387,7 +386,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_remove.setCellFactory(cellFactory);
     }
 
-    private void peekButtonToTable(){
+    private void peekTeller(){
 
         Callback<TableColumn<Teller, Void>, TableCell<Teller, Void>> cellFactory = ( TableColumn<Teller, Void> param) -> {
             TableCell<Teller, Void> cell = new TableCell<Teller, Void>() {
@@ -445,11 +444,72 @@ public class ManagerWindowController extends Bank implements Initializable {
     void refreshClientTable(ActionEvent event) {
         this.initColsClient();
         if(!Bank.ldClient.isEmpty()){
-            this.updateButtonToTable(); //add update button
-            this.removeButtonToTable(); //add remove button
-            this.peekButtonToTable(); //peek button
+            this.removeClient(); //add remove button
+            this.peekClient(); //peek button
         }
         this.refreshDataClient();
+    }
+
+    private void removeClient(){
+
+        Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = ( TableColumn<Client, Void> param) -> {
+            TableCell<Client, Void> cell = new TableCell<Client, Void>() {
+
+                private final Button btnRemove = new Button("Remove");
+                {
+                    btnRemove.setOnAction((ActionEvent event) -> {
+                        Client client = getTableView().getItems().get(getIndex());
+                        System.out.println(client.getClientID());
+                        ManagerWindowController.super.removeTellerACcount(String.valueOf(client.getClientID())); //remove the teller account
+                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getLastname() +  " is removed, please refresh the table",
+                                "Success", JOptionPane.INFORMATION_MESSAGE);
+                    });
+                }
+
+                @Override
+                public void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(btnRemove);
+                    }
+                }
+            };
+            return cell;
+        };
+
+        col_remove1.setCellFactory(cellFactory);
+    }
+
+    private void peekClient(){
+
+        Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = ( TableColumn<Client, Void> param) -> {
+            TableCell<Client, Void> cell = new TableCell<Client, Void>() {
+
+                private final Button btnPeek = new Button("Peek");
+                {
+                    btnPeek.setOnAction((ActionEvent event) -> {
+                        Client client = getTableView().getItems().get(getIndex());
+                        System.out.println(client.getClientID());
+
+                    });
+                }
+
+                @Override
+                public void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(btnPeek);
+                    }
+                }
+            };
+            return cell;
+        };
+
+        col_Peek1.setCellFactory(cellFactory);
     }
 
     //logout button

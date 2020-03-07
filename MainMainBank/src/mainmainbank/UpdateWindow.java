@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
@@ -25,7 +24,7 @@ public class UpdateWindow extends Bank implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        session.setText("Updating teller " + Bank.getSessionIdTeller());
+        session.setText("Updating ID " + Bank.getSessionBackId());
     }
 
     private void setFields(){
@@ -52,10 +51,10 @@ public class UpdateWindow extends Bank implements Initializable {
             String status = super.updateTellerProfile(fields);
 
             if(status.equals("Updated")){
-                JOptionPane.showMessageDialog(null, "Teller " + Bank.getSessionIdTeller() + " is updated"
+                JOptionPane.showMessageDialog(null, "Teller " + Bank.getSessionBackId() + " is updated"
                         , "Updated", JOptionPane.INFORMATION_MESSAGE);
             }else if(status.equals("Failed")){
-                JOptionPane.showMessageDialog(null, "Teller " + Bank.getSessionIdTeller() + " failed to update"
+                JOptionPane.showMessageDialog(null, "Teller " + Bank.getSessionBackId() + " failed to update"
                         , "Failed", JOptionPane.ERROR_MESSAGE);
             }
         }

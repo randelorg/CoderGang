@@ -22,7 +22,7 @@ public class Bank implements IBank{
     //linked list implementation for clients and tellers
     protected static LinkedList<Client> ldClient = new LinkedList(); //stores information of every client
     protected static LinkedList<Teller> ldTeller = new LinkedList(); //stores information of every teller
-    
+
     private static Long BANK_NET_AMOUNT = Long.parseUnsignedLong("18446744073709");
     private static double INTEREST = 0; //bank interest
     private static double MAX_WITHDRAWAL = 0; //max withdrawal
@@ -30,23 +30,22 @@ public class Bank implements IBank{
     private static double INITIAL_DEPOSIT = 0; //initial deposit
     private static double MAINTAINING_BALANCE = 0;
     private static double INITIAL_CREDIT = 0;
-    
+
     //legal age
     private final int clientLegalAge = 18;
     private final int tellerLegalAge = 20;
-    
+
     //session variables USERNAME and PASSWORD
     private static String SESSION_USERNAME;
     private static String SESSION_PASSWORD;
     private static String SESSION_ID;
 
     //for clients
-    private static String SESSION_ID_CLIENT;
-    private static String SESSION_ID_TELLER;
-    
+    private static String SESSION_BACK_ID;
+
     //stores manager credentials
-    private Manager manager = new Manager(); 
-     
+    private Manager manager = new Manager();
+
     public static double getINTEREST() {
         return INTEREST;
     }
@@ -94,7 +93,7 @@ public class Bank implements IBank{
     public static void setINITIAL_CREDIT(double aFIRST_CREDIT) {
         INITIAL_CREDIT = aFIRST_CREDIT;
     }
-    
+
     public static Long getBANK_NET_AMOUNT() {
         return Bank.BANK_NET_AMOUNT;
     }
@@ -112,7 +111,7 @@ public class Bank implements IBank{
         Bank.SESSION_USERNAME = username;
         Bank.SESSION_PASSWORD = password;
     }
-    
+
     public static String getSESSION_ID() {
         return SESSION_ID;
     }
@@ -120,22 +119,14 @@ public class Bank implements IBank{
     public static void setSESSION_ID(String aSESSION_ID) {
         SESSION_ID = aSESSION_ID;
     }
-    
+
     public static String getSESSION_USERNAME() {
         return SESSION_USERNAME;
     }
-    
-    public static String getSESSION_PASSWORD() {
-        return SESSION_PASSWORD;
-    }
 
-    public static String getSessionIdClient() { return SESSION_ID_CLIENT; }
+    public static String getSessionBackId() { return SESSION_BACK_ID; }
 
-    public static void setSessionIdClient(String sessionIdClient) { SESSION_ID_CLIENT = sessionIdClient; }
-
-    public static String getSessionIdTeller() { return SESSION_ID_TELLER; }
-
-    public static void setSessionIdTeller(String sessionIdTeller) { SESSION_ID_TELLER = sessionIdTeller; }
+    public static void setSessionBackId(String sessionBackId) { SESSION_BACK_ID = sessionBackId; }
 
     //get the age according to bday
     private int getAge(String bday){
@@ -271,7 +262,7 @@ public class Bank implements IBank{
     public String updateTellerProfile(String[] fields) {
 
         for (Teller tel: Bank.ldTeller){
-            if(Bank.getSessionIdTeller().equals(String.valueOf(tel.getTellerID()))){
+            if(Bank.getSessionBackId().equals(String.valueOf(tel.getTellerID()))){
                 tel.setFirstName(fields[0]);
                 tel.setMiddleName(fields[1]);
                 tel.setLastname(fields[2]);
