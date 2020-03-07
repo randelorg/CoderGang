@@ -291,6 +291,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         tellers.clear(); //clears the observable list -> tellers
         this.populateTable(); //will fill data in the table
     }
+    }
 
     @FXML
     void refreshTable(ActionEvent event) {
@@ -317,7 +318,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                     btnUpdate.setOnAction((ActionEvent event) -> {
                         Teller tel = getTableView().getItems().get(getIndex());
                         System.out.println(tel.getTellerID());
-                        Bank.setSessionIdClient(String.valueOf(tel.getTellerID()));
+                        Bank.setSessionIdTeller(String.valueOf(tel.getTellerID()));
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateWindow.fxml"));
                             Parent root1 = (Parent) fxmlLoader.load();

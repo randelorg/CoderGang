@@ -14,36 +14,34 @@ import java.util.ResourceBundle;
 
 public class UpdateWindow extends Bank implements Initializable {
 
+    @FXML private Label session;
     @FXML private TextField fname;
     @FXML private TextField lname;
-    @FXML private Label session;
-    @FXML private TextField addres;
     @FXML private TextField mname;
+    @FXML private TextField addres;
+    @FXML private TextField tbExtension;
 
+    private final String[] fields = new String[5];
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        session.setText("Updating teller " + Bank.getSessionIdClient());
+        session.setText("Updating teller " + Bank.getSessionIdTeller());
     }
 
     @FXML
     void Update(ActionEvent event) {
-        for (Teller tel: Bank.ldTeller){
-            if(tel.getTellerID() == Integer.parseInt(Bank.getSessionIdClient())){
-                try {
-                    tel.setFirstName(fname.getText());
-                    tel.setMiddleName(mname.getText());
-                    tel.setLastName(lname.getText());
-                    tel.setAddress(addres.getText());
-                    JOptionPane.showMessageDialog(null, "Updating complete", "Success", JOptionPane.INFORMATION_MESSAGE);
-                }
-                catch (InputMismatchException e){}
-                break;
-            }
-        }
-        Stage stage  = new Stage();
-        stage.close();
-        // do what you have to do
+
+        fields[0] = fname.getText();
+        fields[1] = mname.getText();
+        fields[2] = lname.getText();
+        fields[3] = tbExtension.getText();
+        fields[4] = addres.getText();
+
+        super.updateTellerProfile(fields);
+
+        JOptionPane.showMessageDialog(null, "Teller " + Bank.getSessionIdTeller() + " is updated"
+                                        , "Updated", JOptionPane.INFORMATION_MESSAGE);
+
     }
 
 }

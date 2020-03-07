@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="408.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmainbank.UpdateWindow">
+<AnchorPane prefHeight="447.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmainbank.UpdateWindow">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
    <children>
-      <GridPane layoutX="41.0" layoutY="95.0" prefHeight="209.0" prefWidth="518.0">
+      <GridPane layoutX="41.0" layoutY="95.0" prefHeight="259.0" prefWidth="320.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="0.0" prefWidth="0.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="530.0" />
@@ -24,37 +24,43 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <TextField fx:id="fname" prefHeight="24.0" prefWidth="518.0" promptText="Firtname" GridPane.columnIndex="1">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </TextField>
             <TextField fx:id="mname" promptText="Middlename" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </TextField>
-            <TextField fx:id="lname" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="lname" prefHeight="44.0" prefWidth="320.0" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </TextField>
-            <TextField fx:id="addres" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="addres" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="tbExtension" promptText="Extension name" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
                </font>
             </TextField>
          </children>
       </GridPane>
       <Label fx:id="session" layoutX="41.0" layoutY="35.0" prefHeight="44.0" prefWidth="297.0" text="Teller ID">
          <font>
-            <Font size="20.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="194.0" layoutY="326.0" mnemonicParsing="false" onAction="#Update" prefHeight="44.0" prefWidth="200.0" text="Update">
+      <Button layoutX="101.0" layoutY="375.0" mnemonicParsing="false" onAction="#Update" prefHeight="44.0" prefWidth="200.0" text="Update">
          <font>
             <Font size="20.0" />
          </font>

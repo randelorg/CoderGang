@@ -1,12 +1,8 @@
 package mainmainbank;
 
 
-import javafx.fxml.FXML;
-
-import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.*;
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -46,6 +42,7 @@ public class Bank implements IBank{
 
     //for clients
     private static String SESSION_ID_CLIENT;
+    private static String SESSION_ID_TELLER;
     
     //stores manager credentials
     private Manager manager = new Manager(); 
@@ -135,6 +132,10 @@ public class Bank implements IBank{
     public static String getSessionIdClient() { return SESSION_ID_CLIENT; }
 
     public static void setSessionIdClient(String sessionIdClient) { SESSION_ID_CLIENT = sessionIdClient; }
+
+    public static String getSessionIdTeller() { return SESSION_ID_TELLER; }
+
+    public static void setSessionIdTeller(String sessionIdTeller) { SESSION_ID_TELLER = sessionIdTeller; }
 
     //get the age according to bday
     private int getAge(String bday){
@@ -263,8 +264,17 @@ public class Bank implements IBank{
     }
 
     @Override //for manager
-    public void updateTellerProfile() {
-        
+    public void updateTellerProfile(String[] fields) {
+        for (Teller teller: Bank.ldTeller){
+            if(Bank.getSessionIdTeller().equals(teller.getTellerID())){
+                teller.setFirstName(fields[0]);
+                teller.setMiddleName(fields[1]);
+                teller.setLastName(fields[2]);
+                teller.setExtensionName(fields[3]);
+                teller.setAddress(fields[4]);
+                break;
+            }
+        }
     }
 
     @Override //for teller and manager
