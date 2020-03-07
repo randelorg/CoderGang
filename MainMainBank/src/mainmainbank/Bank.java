@@ -205,7 +205,7 @@ public class Bank implements IBank{
         client.setClientID(Integer.parseInt(clientFields[0]));
         client.setFirstName(clientFields[1]);
         client.setMiddleName(clientFields[2]);
-        client.setLastName(clientFields[3]);
+        client.setLastname(clientFields[3]);
         client.setExtensionName(clientFields[4]);
         client.setBirthDay(clientFields[5]);
         client.setAge(this.getAge(clientFields[5]));
@@ -232,7 +232,7 @@ public class Bank implements IBank{
         teller.setTellerID(Integer.parseInt(tellerFields[0]));
         teller.setFirstName(tellerFields[1]);
         teller.setMiddleName(tellerFields[2]);
-        teller.setLastName(tellerFields[3]);
+        teller.setLastname(tellerFields[3]);
         teller.setExtensionName(tellerFields[4]);
         teller.setBirthDay(tellerFields[5]);
         teller.setAge(this.getAge(tellerFields[5]));
@@ -274,10 +274,10 @@ public class Bank implements IBank{
             if(Bank.getSessionIdTeller().equals(String.valueOf(tel.getTellerID()))){
                 tel.setFirstName(fields[0]);
                 tel.setMiddleName(fields[1]);
-                tel.setLastName(fields[2]);
+                tel.setLastname(fields[2]);
                 tel.setExtensionName(fields[3]);
                 tel.setAddress(fields[4]);
-                tel.setUsername(this.setUpUsername(tel.getFirstName(),tel.getLastName()));
+                tel.setUsername(this.setUpUsername(tel.getFirstName(),tel.getLastname()));
                 System.out.println(tel.getUsername());
                 return "Updated";
             }
@@ -333,7 +333,7 @@ public class Bank implements IBank{
             System.out.println(client.getClientID());
             System.out.println(client.getFirstName());
             System.out.println(client.getMiddleName());
-            System.out.println(client.getLastName());
+            System.out.println(client.getLastname());
             System.out.println(client.getExtensionName());
             System.out.println(client.getBirthDay());
             System.out.println(client.getAge());
@@ -350,7 +350,7 @@ public class Bank implements IBank{
             System.out.println(teller.getTellerID());
             System.out.println(teller.getFirstName());
             System.out.println(teller.getMiddleName());
-            System.out.println(teller.getLastName());
+            System.out.println(teller.getLastname());
             System.out.println(teller.getExtensionName());
             System.out.println(teller.getBirthDay());
             System.out.println(teller.getAge());

@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,8 +26,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -80,8 +77,9 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private PasswordField tbPassword;
     @FXML private PasswordField tbRetypePassword;
 
-    //for look account tab
+    //for look account tab teller
     private final ObservableList<Teller> tellers = FXCollections.observableArrayList();
+    @FXML private TextField omniBox;
     @FXML private TableView<Teller> tvsearchTeller;
     @FXML private TableColumn<Teller, Integer> tvAccountID;
     @FXML private TableColumn<Teller, String> tvFirstName;
@@ -93,7 +91,21 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private TableColumn<Teller, Void> col_remove;
     @FXML private TableColumn<Teller, Void> col_Peek;
 
-     /**
+    //for look account tab client
+    private final ObservableList<Client> clients = FXCollections.observableArrayList();
+    @FXML private TextField omniBox1;
+    @FXML private TableView<Client> tableClient;
+    @FXML private TableColumn<Client, Integer> col_clientID;
+    @FXML private TableColumn<Client, String> col_clientFirstName;
+    @FXML private TableColumn<Client, String> col_clientMiddleName;
+    @FXML private TableColumn<Client, String> col_clientLastName;
+    @FXML private TableColumn<Client, Double> col_clientSavings;
+    @FXML private TableColumn<Client, Double> col_clientDebt;
+    @FXML private TableColumn<Client, Void> col_Update1;
+    @FXML private TableColumn<Client, Void> col_remove1;
+    @FXML private TableColumn<Client, Void> col_Peek1;
+
+    /**
      * Initializes the controller class.
      * @param url
      * @param rb
@@ -178,22 +190,22 @@ public class ManagerWindowController extends Bank implements Initializable {
                 throw new IllegalArgumentException();
             
             JOptionPane.showMessageDialog(null, "Successfully Added", "Saved",
-                            JOptionPane.OK_OPTION);
+                            JOptionPane.INFORMATION_MESSAGE);
             
             accountID.setText(String.valueOf(super.generateClientID()));//creates new client ID
         }
         
         catch(NumberFormatException e){//bday error
             JOptionPane.showMessageDialog(null, "Birthdate is invalid", "Invalid",
-                            JOptionPane.OK_OPTION);
+                            JOptionPane.ERROR_MESSAGE);
         }
         catch(IllegalArgumentException e){//if age is < 18
             JOptionPane.showMessageDialog(null, "Client age must be over 18", "Declined",
-                            JOptionPane.OK_OPTION);
+                            JOptionPane.ERROR_MESSAGE);
         }
         catch(InputMismatchException e){//empty fields
             JOptionPane.showMessageDialog(null, "Please input all fields", "Empty Field(s)",
-                            JOptionPane.OK_OPTION);
+                            JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -245,13 +257,13 @@ public class ManagerWindowController extends Bank implements Initializable {
             tellerID.setText(String.valueOf(super.generateTellerID()));//creates new tellerID
         } catch (NumberFormatException e) {//birthday error
             JOptionPane.showMessageDialog(null, "Birth date is invalid", "Invalid",
-                    JOptionPane.OK_OPTION);
+                    JOptionPane.ERROR_MESSAGE);
         } catch (InputMismatchException e) {//empty fields
             JOptionPane.showMessageDialog(null, "Please input all fields", "Empty Field(s)",
-                    JOptionPane.OK_OPTION);
+                    JOptionPane.ERROR_MESSAGE);
         } catch (IllegalArgumentException e) {//if age is < 18
             JOptionPane.showMessageDialog(null, "Teller age must be over 20", "Declined",
-                    JOptionPane.OK_OPTION);
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -269,46 +281,42 @@ public class ManagerWindowController extends Bank implements Initializable {
         tellerFields[9] = tellerCitizenship.getText();
     }
 
-    //look account tab
-    private void initCols(){
-        tvAccountID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+    //look account tab teller
+    private void initColsTeller(){
+        tvAccountID.setCellValueFactory(new PropertyValueFactory<>("tellerID"));
         tvFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         tvMiddlename.setCellValueFactory(new PropertyValueFactory<>("middleName"));
-        tbLastName.setCellValueFactory(new PropertyValueFactory<>("LastName"));
+        tbLastName.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         tbAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         tvAge.setCellValueFactory(new PropertyValueFactory<>("age"));
     }
 
-    private void populateTable(){ //add data in the table
+    private void populateTellerTable(){ //add data in the table
         for(Teller tel: Bank.ldTeller){
             tellers.add(new Teller(tel.getTellerID(), tel.getFirstName(), tel.getMiddleName(),
-                    tel.getLastName() + " " + tel.getExtensionName(), tel.getAddress(), tel.getAge()));
+                    tel.getLastname() + " " + tel.getExtensionName(), tel.getAddress(), tel.getAge()));
         }
         tvsearchTeller.setItems(tellers);
     }
 
-    private void refreshData(){ //will load again the table data
+    private void refreshDataTeller(){ //will load again the table data
         tvsearchTeller.getItems().clear();
         tellers.clear(); //clears the observable list -> tellers
-        this.populateTable(); //will fill data in the table
+        this.populateTellerTable(); //will fill data in the table
     }
 
-
     @FXML
-    void refreshTable(ActionEvent event) {
-        this.initCols();
-
+    void refreshTableTeller(ActionEvent event) {
+        this.initColsTeller();
         if(!Bank.ldTeller.isEmpty()){
             this.updateButtonToTable(); //add update button
             this.removeButtonToTable(); //add remove button
-            this.peekButtonToTable();
+            this.peekButtonToTable(); //peek button
         }
-        this.refreshData();
+        this.refreshDataTeller();
     }
 
     private void updateButtonToTable(){
-        //@FXML private TableColumn<Teller, Void> col_Update;
-        //@FXML private TableColumn<Teller, Void> col_remove;
 
         Callback<TableColumn<Teller, Void>, TableCell<Teller, Void>> cellFactory = ( TableColumn<Teller, Void> param) -> {
              TableCell<Teller, Void> cell = new TableCell<Teller, Void>() {
@@ -358,7 +366,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                         Teller tel = getTableView().getItems().get(getIndex());
                         System.out.println(tel.getTellerID());
                         ManagerWindowController.super.removeTellerACcount(String.valueOf(tel.getTellerID())); //remove the teller account
-                        JOptionPane.showMessageDialog(null, tel.getFirstName() + " " + tel.getLastName() +  " is removed, please refresh the table", "Success",
+                        JOptionPane.showMessageDialog(null, tel.getFirstName() + " " + tel.getLastname() +  " is removed, please refresh the table", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     });
                 }
@@ -409,6 +417,41 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_Peek.setCellFactory(cellFactory);
     }
 
+    //for look account client
+    private void initColsClient(){
+        col_clientID.setCellValueFactory(new PropertyValueFactory<>("clientID"));
+        col_clientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        col_clientMiddleName.setCellValueFactory(new PropertyValueFactory<>("middleName"));
+        col_clientLastName.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        col_clientSavings.setCellValueFactory(new PropertyValueFactory<>("savingsAmount"));
+        col_clientDebt.setCellValueFactory(new PropertyValueFactory<>("debtCredit"));
+}
+
+    private void populateClientTable(){ //add data in the table
+        for(Client client: Bank.ldClient){
+            clients.add(new Client(client.getClientID(), client.getFirstName(),client.getMiddleName(),client.getLastname() + " " + client.getExtensionName(),
+                client.getSavingsAmount(), client.getDebtCredit()));
+        }
+        tableClient.setItems(clients);
+    }
+
+    private void refreshDataClient(){ //will load again the table data
+        tableClient.getItems().clear();
+        clients.clear(); //clears the observable list -> tellers
+        this.populateClientTable(); //will fill data in the table
+    }
+
+    @FXML
+    void refreshClientTable(ActionEvent event) {
+        this.initColsClient();
+        if(!Bank.ldClient.isEmpty()){
+            this.updateButtonToTable(); //add update button
+            this.removeButtonToTable(); //add remove button
+            this.peekButtonToTable(); //peek button
+        }
+        this.refreshDataClient();
+    }
+
     //logout button
     @FXML
     void logout(ActionEvent event) {
@@ -423,5 +466,5 @@ public class ManagerWindowController extends Bank implements Initializable {
         }
         catch(IOException e){}
     }
-    
+
 }

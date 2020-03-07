@@ -7,8 +7,6 @@ package mainmainbank;
  * and open the template in the editor.
  */
 
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
-
 /**
  *
  * @author Randel and Michael
@@ -16,22 +14,31 @@ import com.sun.org.apache.bcel.internal.generic.ARETURN;
  */
 public class Person {
 
-    private String firstName, middleName, LastName, extensionName;
+    private String firstName;
+    private String middleName;
+    private String lastname;
+    private String extensionName;
     private int age;
     private String birthDay;
     private String gender;
     private String address;
     private String maritaStatus;
     private String citizenship;
-    
+
     public Person(){
-        
+
     }
-    
-    public Person(String firstName, String middleName, String LastName, String address, int age) {
+
+    public Person(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;
-        this.LastName = LastName;
+        this.lastname = lastName;
+    }
+
+    public Person(String firstName, String middleName, String lastName, String address, int age) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastname = lastName;
         this.address = address;
         this.age = age;
     }
@@ -52,12 +59,12 @@ public class Person {
         this.middleName = middleName;
     }
 
-    public String getLastName() {
-        return this.LastName;
+    public String getLastname() {
+        return this.lastname;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastname(String LastName) {
+        this.lastname = LastName;
     }
 
     public void setAge(int age) {
@@ -113,7 +120,5 @@ public class Person {
     public void setExtensionName(String extensionName) {
         this.extensionName = extensionName;
     }
-    
-    
     
 }

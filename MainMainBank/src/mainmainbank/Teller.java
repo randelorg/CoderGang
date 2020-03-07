@@ -10,7 +10,7 @@ package mainmainbank;
  *
  * @author Randel P. Reyes
  */
-class Teller extends Person{
+public class Teller extends Person{
     
     private int tellerID;
     private String username;
@@ -18,8 +18,8 @@ class Teller extends Person{
 
     public Teller(){}
     
-    public Teller(int tellerID, String  firstName, String  middleName, String LastName, String address, int age) {
-        super(firstName, middleName, LastName, address, age);
+    public Teller(int tellerID, String  firstName, String  middleName, String lastName, String address, int age) {
+        super(firstName, middleName, lastName, address, age);
         this.tellerID = tellerID;
     }
 

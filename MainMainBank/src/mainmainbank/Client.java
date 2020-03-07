@@ -10,13 +10,22 @@ package mainmainbank;
  *
  * @author asus
  */
-class Client extends Person {
+public class Client extends Person {
     private int clientID;
     private double savingsAmount;
 
     private double creditAMount;
     private double debtCredit;
     private int age;
+
+    public Client(){}
+
+    public Client(int clientID, String firstName, String middleName, String lastname, double savingsAmount, double debtCredit) {
+        super(firstName,middleName,lastname);
+        this.clientID = clientID;
+        this.savingsAmount = savingsAmount;
+        this.debtCredit = debtCredit;
+    }
 
     public int getClientID() {
         return clientID;

@@ -458,19 +458,19 @@
                            </children>
                         </GridPane>
                      </content></Tab>
-                  <Tab closable="false" text="Look Teller Account">
+                  <Tab fx:id="LookTellerAccount" closable="false" text="Look Teller Account">
                      <content>
-                        <SplitPane dividerPositions="0.09671532846715329" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                        <SplitPane dividerPositions="0.08695652173913043" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="905.0">
                                  <children>
-                                    <TextField fx:id="omniBox" layoutX="666.0" layoutY="7.0" prefHeight="38.0" prefWidth="208.0" promptText="search" />
-                                    <Button layoutX="564.0" layoutY="13.0" mnemonicParsing="false" onAction="#refreshTable" text="Refresh Data" />
+                                    <TextField fx:id="omniBox" layoutX="739.0" layoutY="10.0" prefHeight="38.0" prefWidth="208.0" promptText="search" />
+                                    <Button fx:id="refreshTeller" layoutX="632.0" layoutY="16.0" mnemonicParsing="false" onAction="#refreshTableTeller" text="Refresh Data" />
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="983.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="568.0" prefWidth="983.0">
                                  <children>
-                                    <TableView fx:id="tvsearchTeller" layoutX="13.0" layoutY="22.0" prefHeight="521.0" prefWidth="958.0">
+                                    <TableView fx:id="tvsearchTeller" layoutX="13.0" layoutY="8.0" prefHeight="545.0" prefWidth="958.0">
                                       <columns>
                                         <TableColumn fx:id="tvAccountID" prefWidth="123.0" text="Account ID" />
                                         <TableColumn fx:id="tvFirstName" prefWidth="114.0" text="First name" />
@@ -487,6 +487,37 @@
                           </items>
                         </SplitPane>
                      </content></Tab>
+                  <Tab fx:id="LookClientAccount" closable="false" text="Look Client Account">
+                     <content>
+                        <SplitPane dividerPositions="0.09017713365539452" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="68.0" prefWidth="983.0">
+                                 <children>
+                                    <TextField fx:id="omniBox1" layoutX="742.0" layoutY="10.0" prefHeight="38.0" prefWidth="208.0" promptText="search" />
+                                    <Button fx:id="refreshClient" layoutX="621.0" layoutY="17.0" mnemonicParsing="false" onAction="#refreshClientTable" text="Refresh Data" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="983.0">
+                                 <children>
+                                    <TableView fx:id="tableClient" layoutX="13.0" layoutY="13.0" prefHeight="541.0" prefWidth="958.0">
+                                       <columns>
+                                          <TableColumn fx:id="col_clientID" prefWidth="123.0" text="Account ID" />
+                                          <TableColumn fx:id="col_clientFirstName" prefWidth="114.0" text="First name" />
+                                          <TableColumn fx:id="col_clientMiddleName" prefWidth="120.0" text="Middle name" />
+                                          <TableColumn fx:id="col_clientLastName" prefWidth="146.0" text="Last name" />
+                                          <TableColumn fx:id="col_clientSavings" prefWidth="107.0" text="Savings" />
+                                          <TableColumn fx:id="col_clientDebt" prefWidth="89.0" text="Debt" />
+                                          <TableColumn fx:id="col_Update1" prefWidth="94.0" text="Update" />
+                                          <TableColumn fx:id="col_remove1" text="Remove" />
+                                          <TableColumn fx:id="col_Peek1" prefWidth="84.0" text="Peek" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
          </children>
