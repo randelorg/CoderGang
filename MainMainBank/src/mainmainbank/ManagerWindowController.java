@@ -82,7 +82,7 @@ public class ManagerWindowController extends Bank implements Initializable {
     //for look account tab teller
     private final ObservableList<Teller> tellers = FXCollections.observableArrayList();
     @FXML private TextField omniBox;
-    @FXML private TableView<Teller> tvsearchTeller;
+    @FXML private TableView<Teller> tableTeller;
     @FXML private TableColumn<Teller, Integer> tvAccountID;
     @FXML private TableColumn<Teller, String> tvFirstName;
     @FXML private TableColumn<Teller, String> tvMiddlename;
@@ -106,6 +106,8 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private TableColumn<Client, Void> col_remove1;
     @FXML private TableColumn<Client, Void> col_Peek1;
 
+    private FilteredList<Teller> filteredList = new FilteredList<>(tellers, p -> true);
+    private SortedList<Teller> sortedList = new SortedList<>(filteredList);
     /**
      * Initializes the controller class.
      * @param url
@@ -122,8 +124,6 @@ public class ManagerWindowController extends Bank implements Initializable {
         initSettings();
         initDefault();
         initGeneratorID();
-
-        searchTeller();
     }
 
     private void initSettings(){
@@ -299,13 +299,15 @@ public class ManagerWindowController extends Bank implements Initializable {
             tellers.add(new Teller(tel.getTellerID(), tel.getFirstName(), tel.getMiddleName(),
                     tel.getLastname() + " " + tel.getExtensionName(), tel.getAddress(), tel.getAge()));
         }
-        tvsearchTeller.setItems(tellers);
+        tableTeller.setItems(tellers);
     }
 
     private void refreshDataTeller(){ //will load again the table data
-        tvsearchTeller.getItems().clear();
+        tableTeller.getItems().clear();
         tellers.clear(); //clears the observable list -> tellers
+        //this.clearFilteredList();
         this.populateTellerTable(); //will fill data in the table
+        //this.searchTeller();
     }
 
     @FXML
@@ -517,8 +519,20 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     /* searching algol */
+    @FXML
+    void searchDataTeller(ActionEvent event) throws AWTException {
+        Robot robot = new Robot();//simulates press of f3
+
+        robot.keyPress(114); //f3 key
+        this.searchTeller();
+    }
+
+    private void clearFilteredList(){
+        filteredList.clear();
+        sortedList.clear();
+    }
+
     private void searchTeller(){
-        FilteredList<Teller> filteredList = new FilteredList<>(tellers, p -> true);
 
         omniBox.textProperty().addListener((observable, oldValue, newValue) ->{
             filteredList.setPredicate(teller -> {
@@ -532,17 +546,15 @@ public class ManagerWindowController extends Bank implements Initializable {
                     return true;
                 }else if(teller.getLastname().toLowerCase().contains(lowerCaseFilter)){
                     return true;
-                }else if(String.valueOf(teller.getTellerID()).toLowerCase().contains(lowerCaseFilter)){
+                }else if(String.valueOf(teller.getTellerID()).contains(lowerCaseFilter)){
                     return true;
                 }
-
                 return false;
             });
         });
 
-        SortedList<Teller> sortedList = new SortedList<>(filteredList);
-        sortedList.comparatorProperty().bind(tvsearchTeller.comparatorProperty());
-        tvsearchTeller.setItems(sortedList);
+        sortedList.comparatorProperty().bind(tableTeller.comparatorProperty());
+        tableTeller.setItems(sortedList);
     }
 
     //logout button

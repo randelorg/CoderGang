@@ -470,7 +470,7 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="568.0" prefWidth="983.0">
                                  <children>
-                                    <TableView fx:id="tvsearchTeller" layoutX="13.0" layoutY="10.0" prefHeight="545.0" prefWidth="958.0">
+                                    <TableView fx:id="tableTeller" layoutX="13.0" layoutY="10.0" prefHeight="545.0" prefWidth="958.0">
                                       <columns>
                                         <TableColumn fx:id="tvAccountID" prefWidth="123.0" text="Account ID" />
                                         <TableColumn fx:id="tvFirstName" prefWidth="114.0" text="First name" />
