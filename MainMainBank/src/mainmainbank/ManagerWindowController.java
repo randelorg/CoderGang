@@ -126,6 +126,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         initSettings();
         initDefault();
         initGeneratorID();
+
     }
 
     private void initSettings(){
@@ -287,7 +288,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         tellerFields[9] = tellerCitizenship.getText();
     }
 
-    //look account tab teller
+    /* look for teller account */
     private void initColsTeller(){
         tvAccountID.setCellValueFactory(new PropertyValueFactory<>("tellerID"));
         tvFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -306,10 +307,10 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     private void refreshDataTeller(){ //will load again the table data
-        tableTeller.getItems().clear();
+        this.removeListTeller(); //removes the teller table items
         tellers.clear(); //clears the observable list -> tellers
         this.populateTellerTable(); //will fill data in the table
-        this.searchTeller();
+        this.searchTeller(); //search through a specific predicate (eg. ID, name)
     }
 
     @FXML
@@ -321,6 +322,7 @@ public class ManagerWindowController extends Bank implements Initializable {
             this.peekTeller(); //peek button
         }
         this.refreshDataTeller();
+        //this.searchTeller();
     }
 
     private void updateTeller(){
@@ -434,7 +436,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_Peek.setCellFactory(cellFactory);
     }
 
-    //for look account client
+    /* look for client account */
     private void initColsClient(){
         col_clientID.setCellValueFactory(new PropertyValueFactory<>("clientID"));
         col_clientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -453,9 +455,10 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     private void refreshDataClient(){ //will load again the table data
-        tableClient.getItems().clear();
+        this.removeListClient(); //removes the client table items
         clients.clear(); //clears the observable list -> tellers
         this.populateClientTable(); //will fill data in the table
+        this.searchClient(); //search through a specific predicate (eg. ID, name)
     }
 
     @FXML
@@ -541,31 +544,79 @@ public class ManagerWindowController extends Bank implements Initializable {
     }
 
     /* searching algol */
-    private void searchTeller(){
-        FilteredList<Teller> filteredList = new FilteredList<>(tellers, p -> true);
-        omniBox.textProperty().addListener((observable, oldValue, newValue) ->{
-            filteredList.setPredicate(teller -> {
-                if ((newValue == null || newValue.isEmpty())){
+    //for tellers
+    private FilteredList<Teller> filteredListTeller = new FilteredList<>(tellers, p -> true);
+    private SortedList<Teller> sortedListTeller = new SortedList<>(filteredListTeller);
+    //for clients
+    private FilteredList<Client> filteredListClient= new FilteredList<>(clients, p -> true);
+    private SortedList<Client> sortedListClient = new SortedList<>(filteredListClient);
+
+    private void removeListTeller(){
+        int selectedItem = tableTeller.getSelectionModel().getSelectedIndex();
+        if (selectedItem >= 0) {
+            tableTeller.getItems().remove(selectedItem);
+        }
+    }
+
+    private void searchTeller() {
+
+        omniBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredListTeller.setPredicate(teller -> {
+                if ((newValue == null || newValue.isEmpty())) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if(teller.getFirstName().toLowerCase().contains(lowerCaseFilter)){
+                if (teller.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                }else if(teller.getLastname().toLowerCase().contains(lowerCaseFilter)){
+                } else if (teller.getLastname().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                }else if(String.valueOf(teller.getTellerID()).contains(lowerCaseFilter)){
+                } else if (String.valueOf(teller.getTellerID()).contains(lowerCaseFilter)) {
                     return true;
                 }
+
                 return false;
             });
         });
 
-        SortedList<Teller> sortedList = new SortedList<>(filteredList);
-        sortedList.comparatorProperty().bind(tableTeller.comparatorProperty());
-        tableTeller.setItems(sortedList);
+        sortedListTeller.comparatorProperty().bind(tableTeller.comparatorProperty());
+        tableTeller.setItems(sortedListTeller);
     }
+
+    private void removeListClient(){
+        int selectedItem = tableClient.getSelectionModel().getSelectedIndex();
+        if (selectedItem >= 0) {
+            tableClient.getItems().remove(selectedItem);
+        }
+    }
+
+    private void searchClient() {
+
+        omniBox1.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredListClient.setPredicate(client -> {
+                if ((newValue == null || newValue.isEmpty())) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (client.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (client.getLastname().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(client.getClientID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+
+                return false;
+            });
+        });
+
+        sortedListClient.comparatorProperty().bind(tableClient.comparatorProperty());
+        tableClient.setItems(sortedListClient);
+    }
+
 
     //logout button
     @FXML
