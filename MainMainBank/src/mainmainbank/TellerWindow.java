@@ -1,5 +1,6 @@
 package mainmainbank;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -22,12 +23,10 @@ public class TellerWindow extends BankTransactions implements Initializable {
 
     //text fields and button
     @FXML private Label lbUsername;
-    @FXML private Button btnDeposit;
-    @FXML private Button btnWithdraw;
-    @FXML private Button btnPayCredit;
-    @FXML private Button btnViewSavings;
+    @FXML private Button btnDeposit1;
+    @FXML private Button btnWithdraw1;
+    @FXML private Button btnPayCredit1;
     @FXML private Button btnViewTransaction;
-    @FXML private Button btnViewCreditDebt;
     @FXML private TextField omnibox;
     @FXML private Button btnYourAccount;
     @FXML private Button btnRefresh;
@@ -41,7 +40,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
     @FXML private TableColumn<Client, String> col_Extensionname;
     @FXML private TableColumn<Client, Void> col_Peek;
 
-    //collections classes used to search function
+    //(collections) classes used to search function
     private FilteredList<Client> filteredListClient = new FilteredList<>(clients, p -> true);
     private SortedList<Client> sortedListClient = new SortedList<>(filteredListClient);
 
@@ -100,7 +99,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
     private void peekTeller(){
 
         Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = (TableColumn<Client, Void> param) -> {
-            TableCell<Client, Void> cell = new TableCell<Client, Void>() {
+            return new TableCell<Client, Void>() {
 
                 private final Button btnPeek = new Button("Peek");
                 {
@@ -110,7 +109,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
                         Bank.setSessionBackId(String.valueOf(cl.getClientID()));
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PeekAccount.fxml"));
-                            Parent root1 = (Parent) fxmlLoader.load();
+                            Parent root1 = fxmlLoader.load();
                             Stage peek = new Stage();
                             peek.setScene(new Scene(root1, 650, 600));
                             peek.setResizable(false);
@@ -131,7 +130,6 @@ public class TellerWindow extends BankTransactions implements Initializable {
                     }
                 }
             };
-            return cell;
         };
 
         col_Peek.setCellFactory(cellFactory);
@@ -139,7 +137,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
 
     private void searchTeller() {
 
-        omnibox.textProperty().addListener((observable, oldValue, newValue) -> {
+        omnibox.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             filteredListClient.setPredicate(client -> {
                 if ((newValue == null || newValue.isEmpty())) {
                     return true;
@@ -151,15 +149,12 @@ public class TellerWindow extends BankTransactions implements Initializable {
                     System.out.println("Teller window -> client ID" + client.getClientID());
                     //add method here to support client ID retrieval
                     return true;
-                } else if (client.getLastname().toLowerCase().contains(lowerCaseFilter)) {
+                } else //add method here to support client ID retrieval
+                    if (client.getLastname().toLowerCase().contains(lowerCaseFilter)) {
                     //add method here to support client ID retrieval
                     return true;
-                } else if (String.valueOf(client.getClientID()).contains(lowerCaseFilter)) {
-                    //add method here to support client ID retrieval
-                    return true;
-                }
+                } else return String.valueOf(client.getClientID()).contains(lowerCaseFilter);
 
-                return false;
             });
         });
 
@@ -173,6 +168,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
 //        super.checkSavings();
 //        //view transcation method here
 //        super.viewCreditDebt();
+    // set
 
     @FXML
     void Deposit(ActionEvent event) {
