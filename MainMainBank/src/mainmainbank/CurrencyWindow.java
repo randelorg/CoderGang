@@ -1,5 +1,6 @@
 package mainmainbank;
 
+import javafx.beans.binding.DoubleExpression;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.net.URL;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 public class CurrencyWindow extends TellerWindow implements Initializable {
@@ -37,32 +39,54 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
         int i = 0;
         switch (TellerWindow.getTransactionType()){
             case "Deposit":
-                i = super.deposit(Double.parseDouble(Fund.getText()));
+                i = super.deposit(getFund());
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
                 else//if client is not found
                     notFound();
                 break;
             case "Withdraw":
-                i = super.withdraw(Double.parseDouble(Fund.getText()));
+                i = super.withdraw(getFund());
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
                 else//if client is not found
                     notFound();
                 break;
             case "SendFund":
-                i = super.sendFund(String.valueOf(tbeceiverID.getText()),Double.parseDouble(Fund.getText()));
+                i = super.sendFund(String.valueOf(tbeceiverID.getText()),getFund());
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
                 else//if client is not found
                     notFound();
                 break;
             case "PayCredit":
-                super.payCredit(Double.parseDouble(Fund.getText()));
+                super.payCredit(getFund());
                 break;
             case "Transaction":
                 break;
         }
+    }
+
+    private double getFund(){
+        try{
+            Double value = new Double(Double.parseDouble(Fund.getText()));
+            if(value instanceof  Double){
+                return Double.parseDouble((Fund.getText()));
+            }else
+                throw new InputMismatchException();
+        }
+
+        catch (InputMismatchException e){
+            JOptionPane.showMessageDialog(null, "Invalid amount",
+                    "Invalid", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Invalid amount",
+                    "Invalid", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        return 0;
     }
 
     private void message(String type){
