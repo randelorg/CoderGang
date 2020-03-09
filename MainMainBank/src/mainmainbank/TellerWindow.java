@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
 
 public class TellerWindow extends BankTransactions implements Initializable {
 
-    //text fields and button
     @FXML private Label lbUsername;
     @FXML private Button btnDeposit1;
     @FXML private Button btnWithdraw1;
@@ -66,7 +65,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
     }
 
     @FXML
-    void RefreshTableData(ActionEvent event) {
+    private void RefreshTableData(ActionEvent event) {
         this.initCols();
         if(!Bank.ldTeller.isEmpty()){
             this.peekTeller(); //add peek button
@@ -95,6 +94,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
         this.populateTable(); //will fill data in the table
         this.searchTeller(); //search through a specific predicate (eg. ID, name)
     }
+
 
     private void peekTeller(){
 
@@ -151,9 +151,9 @@ public class TellerWindow extends BankTransactions implements Initializable {
                     return true;
                 } else //add method here to support client ID retrieval
                     if (client.getLastname().toLowerCase().contains(lowerCaseFilter)) {
-                    //add method here to support client ID retrieval
-                    return true;
-                } else return String.valueOf(client.getClientID()).contains(lowerCaseFilter);
+                        //add method here to support client ID retrieval
+                        return true;
+                    } else return String.valueOf(client.getClientID()).contains(lowerCaseFilter);
 
             });
         });
@@ -162,7 +162,7 @@ public class TellerWindow extends BankTransactions implements Initializable {
         tableClient.setItems(sortedListClient);
     }
 
-//        super.deposit();
+    //        super.deposit();
 //        super.withdraw();
 //        super.payCredit();
 //        super.checkSavings();
@@ -189,7 +189,6 @@ public class TellerWindow extends BankTransactions implements Initializable {
     void payCredit(ActionEvent event) {
 
     }
-
 
 
 }

@@ -1,59 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="387.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmainbank.TellerWindow">
+<AnchorPane prefHeight="530.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmainbank.TellerWindow">
    <children>
-      <Label fx:id="lbUsername" layoutX="110.0" layoutY="27.0" prefHeight="23.0" prefWidth="239.0" text="Name">
+      <Label layoutX="25.0" layoutY="18.0" text="Welcome">
          <font>
-            <Font name="Microsoft Sans Serif" size="20.0" />
+            <Font name="Microsoft Sans Serif" size="25.0" />
          </font>
       </Label>
-      <ButtonBar buttonMinWidth="80.0" layoutX="138.0" layoutY="249.0" prefHeight="118.0" prefWidth="385.0">
-        <buttons>
-          <Button fx:id="btnDeposit" mnemonicParsing="false" onAction="#Deposit" prefHeight="120.0" prefWidth="100.0" text="Deposit" />
-            <Button fx:id="btnWithdraw" mnemonicParsing="false" onAction="#Widthdraw" prefHeight="120.0" prefWidth="100.0" text="Withdraw" />
-            <Button fx:id="btnPayCredit" mnemonicParsing="false" onAction="#payCredit" prefHeight="120.0" prefWidth="100.0" text="Pay credit" />
-            <Button fx:id="btnViewTransaction" mnemonicParsing="false" onAction="#ViewTranscation" prefHeight="120.0" prefWidth="100.0" text="View &#10;transaction" textAlignment="CENTER" />
-        </buttons>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </ButtonBar>
-      <Label layoutX="17.0" layoutY="26.0" text="Welcome">
+      <Label fx:id="lbUsername" layoutX="142.0" layoutY="18.0" text="Username">
          <font>
-            <Font name="Microsoft Sans Serif" size="20.0" />
+            <Font name="Microsoft Sans Serif" size="25.0" />
          </font>
       </Label>
-      <TableView fx:id="tableClient" layoutX="31.0" layoutY="130.0" prefHeight="109.0" prefWidth="639.0">
+      <TableView fx:id="tableClient" layoutX="130.0" layoutY="117.0" prefHeight="200.0" prefWidth="737.0">
         <columns>
-          <TableColumn fx:id="col_ID" minWidth="20.0" prefWidth="137.0" text="Account ID" />
-          <TableColumn fx:id="col_Firstname" minWidth="20.0" prefWidth="100.0" text="Firstname" />
-            <TableColumn fx:id="col_Middlename" minWidth="20.0" prefWidth="100.0" text="Middlename" />
-            <TableColumn fx:id="col_Lastname" minWidth="20.0" prefWidth="100.0" text="Lastname" />
-            <TableColumn fx:id="col_Extensionname" minWidth="20.0" prefWidth="100.0" text="Extension name" />
-            <TableColumn fx:id="col_Peek" minWidth="20.0" prefWidth="100.0" text="Peek" />
+          <TableColumn fx:id="col_ID" prefWidth="120.0" text="Account ID" />
+          <TableColumn fx:id="col_Firstname" prefWidth="120.0" text="Firstname" />
+            <TableColumn fx:id="col_Middlename" prefWidth="120.0" text="Lastname" />
+            <TableColumn fx:id="col_Lastname" prefWidth="120.0" text="Middlename" />
+            <TableColumn fx:id="col_Extensionname" prefWidth="120.0" text="Extension name" />
+            <TableColumn fx:id="col_Peek" prefWidth="136.0" text="Peek" />
         </columns>
       </TableView>
-      <TextField fx:id="omnibox" layoutX="483.0" layoutY="91.0" promptText="Search..">
+      <TextField fx:id="omnibox" layoutX="680.0" layoutY="80.0" promptText="Search..">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="btnYourAccount" layoutX="560.0" layoutY="22.0" mnemonicParsing="false" text="Your Account">
+      <Button fx:id="btnRefresh" layoutX="601.0" layoutY="80.0" mnemonicParsing="false" onAction="#RefreshTableData" text="Refresh">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnRefresh" layoutX="400.0" layoutY="91.0" mnemonicParsing="false" onAction="#RefreshTableData" text="Refresh">
+      <HBox alignment="CENTER" layoutX="225.0" layoutY="337.0" prefHeight="100.0" prefWidth="543.0" spacing="20.0">
+         <children>
+            <Button fx:id="btnDeposit" mnemonicParsing="false" onAction="#Deposit" prefHeight="100.0" prefWidth="102.0" text="Deposit" />
+            <Button fx:id="btnWithdraw" mnemonicParsing="false" onAction="#Widthdraw" prefHeight="100.0" prefWidth="102.0" text="Withdraw" />
+            <Button fx:id="btnPayCredit" mnemonicParsing="false" onAction="#payCredit" prefHeight="100.0" prefWidth="102.0" text="Pay Credit" />
+            <Button fx:id="btnViewTransaction" mnemonicParsing="false" onAction="#ViewTranscation" prefHeight="100.0" prefWidth="102.0" text="View &#10;Transaction" textAlignment="CENTER" />
+         </children>
+      </HBox>
+      <Button fx:id="btnYourAccount" layoutX="867.0" layoutY="17.0" mnemonicParsing="false" onAction="#RefreshTableData" text="Your Account">
          <font>
             <Font size="15.0" />
          </font>
