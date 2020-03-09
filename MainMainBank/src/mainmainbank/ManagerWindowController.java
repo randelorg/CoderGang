@@ -126,7 +126,6 @@ public class ManagerWindowController extends Bank implements Initializable {
         initSettings();
         initDefault();
         initGeneratorID();
-
     }
 
     private void initSettings(){

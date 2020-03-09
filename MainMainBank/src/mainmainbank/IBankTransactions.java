@@ -7,6 +7,7 @@ public interface IBankTransactions {
     void withdraw();
     void deposit();
     void payCredit();
+    void viewCreditDebt();
     void computeMonthlyPayment();
     void computeAddFundToBank();
 }

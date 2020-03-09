@@ -28,6 +28,12 @@ public class Client extends Person {
         this.debtCredit = debtCredit;
     }
 
+    public Client(int clientID, String firstName, String middleName, String lastname, String extensionName) {
+        super(firstName,middleName,lastname);
+        this.clientID = clientID;
+    }
+
+
     public int getClientID() {
         return clientID;
     }
