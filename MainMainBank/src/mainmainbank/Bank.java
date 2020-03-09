@@ -24,12 +24,69 @@ public class Bank implements IBank{
     protected static LinkedList<Teller> ldTeller = new LinkedList(); //stores information of every teller
 
     private static Long BANK_NET_AMOUNT = Long.parseUnsignedLong("18446744073709");
-    private static double INTEREST = 0; //bank interest
-    private static double MAX_WITHDRAWAL = 0; //max withdrawal
-    private static double MIN_WITHDRWAl = 0; //minimum withdrawal
-    private static double INITIAL_DEPOSIT = 0; //initial deposit
-    private static double MAINTAINING_BALANCE = 0;
-    private static double INITIAL_CREDIT = 0;
+    private static double INTEREST; //bank interest
+    private static double MAX_WITHDRAWAL; //max withdrawal
+    private static double MIN_WITHDRWAl; //minimum withdrawal
+
+    public static Long getBankNetAmount() {
+        return BANK_NET_AMOUNT;
+    }
+
+    public static void setBankNetAmount(Long bankNetAmount) {
+        BANK_NET_AMOUNT = bankNetAmount;
+    }
+
+    public static double getINTEREST() {
+        return INTEREST;
+    }
+
+    public static void setINTEREST(double INTEREST) {
+        Bank.INTEREST = INTEREST;
+    }
+
+    public static double getMaxWithdrawal() {
+        return MAX_WITHDRAWAL;
+    }
+
+    public static void setMaxWithdrawal(double maxWithdrawal) {
+        MAX_WITHDRAWAL = maxWithdrawal;
+    }
+
+    public static double getMIN_WITHDRWAl() {
+        return MIN_WITHDRWAl;
+    }
+
+    public static void setMIN_WITHDRWAl(double MIN_WITHDRWAl) {
+        Bank.MIN_WITHDRWAl = MIN_WITHDRWAl;
+    }
+
+    public static double getInitialDeposit() {
+        return INITIAL_DEPOSIT;
+    }
+
+    public static void setInitialDeposit(double initialDeposit) {
+        INITIAL_DEPOSIT = initialDeposit;
+    }
+
+    public static double getMaintainingBalance() {
+        return MAINTAINING_BALANCE;
+    }
+
+    public static void setMaintainingBalance(double maintainingBalance) {
+        MAINTAINING_BALANCE = maintainingBalance;
+    }
+
+    public static double getInitialCredit() {
+        return INITIAL_CREDIT;
+    }
+
+    public static void setInitialCredit(double initialCredit) {
+        INITIAL_CREDIT = initialCredit;
+    }
+
+    private static double INITIAL_DEPOSIT; //initial deposit
+    private static double MAINTAINING_BALANCE;
+    private static double INITIAL_CREDIT;
 
     //legal age
     private final int clientLegalAge = 18;
@@ -45,54 +102,6 @@ public class Bank implements IBank{
 
     //stores manager credentials
     private Manager manager = new Manager();
-
-    public static double getINTEREST() {
-        return INTEREST;
-    }
-
-    public static void setINTEREST(double aINTEREST) {
-        INTEREST = aINTEREST;
-    }
-
-    public static double getMAX_WITHDRAWAL() {
-        return MAX_WITHDRAWAL;
-    }
-
-    public static void setMAX_WITHDRAWAL(double aMAX_WITHDRAWAL) {
-        MAX_WITHDRAWAL = aMAX_WITHDRAWAL;
-    }
-
-    public static double getMIN_WITHDRWAl() {
-        return MIN_WITHDRWAl;
-    }
-
-    public static void setMIN_WITHDRWAl(double aMIN_WITHDRWAl) {
-        MIN_WITHDRWAl = aMIN_WITHDRWAl;
-    }
-
-    public static double getINITIAL_DEPOSIT() {
-        return INITIAL_DEPOSIT;
-    }
-
-    public static void setINITIAL_DEPOSIT(double aINITIAL_DEPOSIT) {
-        INITIAL_DEPOSIT = aINITIAL_DEPOSIT;
-    }
-
-    public static double getMAINTAINING_BALANCE() {
-        return MAINTAINING_BALANCE;
-    }
-
-    public static void setMAINTAINING_BALANCE(double aMAINTAINING_BALANCE) {
-        MAINTAINING_BALANCE = aMAINTAINING_BALANCE;
-    }
-
-    public static double getINITIAL_CREDIT() {
-        return INITIAL_CREDIT;
-    }
-
-    public static void setINITIAL_CREDIT(double aFIRST_CREDIT) {
-        INITIAL_CREDIT = aFIRST_CREDIT;
-    }
 
     public static Long getBANK_NET_AMOUNT() {
         return Bank.BANK_NET_AMOUNT;
@@ -241,16 +250,6 @@ public class Bank implements IBank{
         return "Hired"; //when teller age is >= 20
     }
 
-    @Override //for the teller and manager
-    public void searchClientAccount() {
-        
-    }
-
-    @Override //for manager
-    public void searchTellerAccount() {
-        
-    }
-
     private String setUpUsername(String fname, String lname){
         return fname.substring(0, 1).toUpperCase() + fname.substring(1).concat(lname.substring(0, 1).toUpperCase() + lname.substring(1));
     }
@@ -272,16 +271,6 @@ public class Bank implements IBank{
         }
 
         return "Failed";
-    }
-
-    @Override //for teller and manager
-    public void displayClientAccount() {
-        
-    }
-
-    @Override //for manager
-    public void displayTellerAccount() {
-        
     }
 
     @Override //for manager

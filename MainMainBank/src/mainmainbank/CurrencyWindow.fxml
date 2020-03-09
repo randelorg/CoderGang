@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="272.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmainbank.CurrencyWindow">
+   <children>
+      <Label fx:id="lbAccountID" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="394.0" text="Account ID">
+         <font>
+            <Font name="Microsoft Sans Serif" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Fund" layoutX="122.0" layoutY="105.0" prefHeight="37.0" prefWidth="296.0" promptText="Input fund here">
+         <font>
+            <Font name="Microsoft Sans Serif" size="20.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lbTypeOfTransaction" layoutX="21.0" layoutY="54.0" prefHeight="30.0" prefWidth="394.0" text="TypeOfTransaction">
+         <font>
+            <Font name="Microsoft Sans Serif" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSend" layoutX="122.0" layoutY="202.0" mnemonicParsing="false" onAction="#ProcessCurrency" prefHeight="37.0" prefWidth="296.0" text="PROCESS" textAlignment="CENTER">
+         <font>
+            <Font name="Microsoft Sans Serif" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tbeceiverID" layoutX="122.0" layoutY="153.0" prefHeight="37.0" prefWidth="296.0" promptText="Input receiver ID">
+         <font>
+            <Font name="Microsoft Sans Serif" size="20.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

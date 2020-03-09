@@ -16,10 +16,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TellerWindow extends BankTransactions implements Initializable {
+
+    private static String transactionType;
+    public static String getTransactionType() {
+        return transactionType;
+    }
+
+    public static void setTransactionType(String transactionType) {
+        TellerWindow.transactionType = transactionType;
+    }
 
     @FXML private Label lbUsername;
     @FXML private Button btnDeposit1;
@@ -95,7 +105,6 @@ public class TellerWindow extends BankTransactions implements Initializable {
         this.searchTeller(); //search through a specific predicate (eg. ID, name)
     }
 
-
     private void peekTeller(){
 
         Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = (TableColumn<Client, Void> param) -> {
@@ -146,15 +155,21 @@ public class TellerWindow extends BankTransactions implements Initializable {
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (client.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
-                    System.out.println("Teller window -> client ID" + client.getClientID());
+                    System.out.println("Teller window -> client ID: " + client.getClientID());
+                    Bank.setSessionBackId(String.valueOf(client.getClientID()));
                     //add method here to support client ID retrieval
                     return true;
                 } else //add method here to support client ID retrieval
                     if (client.getLastname().toLowerCase().contains(lowerCaseFilter)) {
+                        Bank.setSessionBackId(String.valueOf(client.getClientID()));
                         //add method here to support client ID retrieval
                         return true;
-                    } else return String.valueOf(client.getClientID()).contains(lowerCaseFilter);
+                    } else if (String.valueOf(client.getClientID()).contains(lowerCaseFilter)){
+                        Bank.setSessionBackId(String.valueOf(client.getClientID()));
+                        return true;
+                    }
 
+                    return false;
             });
         });
 
@@ -162,33 +177,43 @@ public class TellerWindow extends BankTransactions implements Initializable {
         tableClient.setItems(sortedListClient);
     }
 
-    //        super.deposit();
-//        super.withdraw();
-//        super.payCredit();
-//        super.checkSavings();
-//        //view transcation method here
-//        super.viewCreditDebt();
-    // set
-
-    @FXML
-    void Deposit(ActionEvent event) {
-
+    private void displayForm() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CurrencyWindow.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage currency = new Stage();
+        currency.setScene(new Scene(root1, 540, 253));
+        currency.setResizable(false);
+        currency.show();
     }
 
     @FXML
-    void ViewTranscation(ActionEvent event) {
-
+    private void Deposit(ActionEvent event) throws IOException {
+        setTransactionType("Deposit");
+        this.displayForm();
     }
 
     @FXML
-    void Widthdraw(ActionEvent event) {
-
+    private void ViewTranscation(ActionEvent event) throws IOException {
+        setTransactionType("Transaction");
+        this.displayForm();
     }
 
     @FXML
-    void payCredit(ActionEvent event) {
-
+    private void Widthdraw(ActionEvent event) throws IOException {
+        setTransactionType("Withdraw");
+        this.displayForm();
     }
 
+    @FXML
+    private void payCredit(ActionEvent event) throws IOException {
+        setTransactionType("PayCredit");
+        this.displayForm();
+    }
+
+    @FXML
+    private void SendFund(ActionEvent event) throws IOException {
+        setTransactionType("SendFund");
+        this.displayForm();
+    }
 
 }

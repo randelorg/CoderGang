@@ -123,19 +123,19 @@ public class ManagerWindowController extends Bank implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initGenders();
-        initSettings();
+        //initSettings();
         initDefault();
         initGeneratorID();
     }
 
     private void initSettings(){
         session_username.setText(Bank.getSESSION_USERNAME());
-        setInitialDeposit.setText(String.valueOf(Bank.getINITIAL_DEPOSIT()));
-        setMaintainingBalance.setText(String.valueOf(Bank.getMAINTAINING_BALANCE()));
-        setInitialCredit.setText(String.valueOf(Bank.getINITIAL_CREDIT()));
+        setInitialDeposit.setText(String.valueOf(Bank.getInitialDeposit()));
+        setMaintainingBalance.setText(String.valueOf(Bank.getMaintainingBalance()));
+        setInitialCredit.setText(String.valueOf(Bank.getInitialCredit()));
         setMinWithdraw.setText(String.valueOf(Bank.getMIN_WITHDRWAl()));
         setInterest.setText(String.valueOf(Bank.getINTEREST()));
-        setMaxWithdraw.setText(String.valueOf(Bank.getMAX_WITHDRAWAL()));
+        setMaxWithdraw.setText(String.valueOf(Bank.getMaxWithdrawal()));
     }
     
     private void initGenders(){
@@ -158,12 +158,15 @@ public class ManagerWindowController extends Bank implements Initializable {
     void saveSetters(ActionEvent event) {
         
         try{
-            Bank.setINITIAL_CREDIT(Double.parseDouble(setInitialDeposit.getText()));
-            Bank.setMAINTAINING_BALANCE(Double.parseDouble(setMaintainingBalance.getText()));
-            Bank.setINITIAL_DEPOSIT(Double.parseDouble(setInitialCredit.getText()));
-            Bank.setMIN_WITHDRWAl(Double.parseDouble(setMinWithdraw.getText()));
-            Bank.setMAX_WITHDRAWAL(Double.parseDouble(setMaxWithdraw.getText()));
+            //initSettings();
             Bank.setINTEREST(Double.parseDouble(setInterest.getText()));
+            Bank.setMaxWithdrawal(Double.parseDouble(setMaxWithdraw.getText()));
+            Bank.setMIN_WITHDRWAl(Double.parseDouble(setMinWithdraw.getText()));
+            Bank.setInitialDeposit(Double.parseDouble(setInitialDeposit.getText()));
+            Bank.setMaintainingBalance(Double.parseDouble(setMaintainingBalance.getText()));
+            Bank.setInitialCredit(Double.parseDouble(setInitialCredit.getText()));
+            System.out.println(Bank.getInitialCredit());
+
             JOptionPane.showMessageDialog(null, "All setters are saved in the system", "Saved",
                             JOptionPane.INFORMATION_MESSAGE);
         }

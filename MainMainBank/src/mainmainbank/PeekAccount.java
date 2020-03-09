@@ -27,6 +27,12 @@ public class PeekAccount extends Bank implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //sets all the initial credit amount of clients
+        for (Client cl: Bank.ldClient){
+            if(cl.getCreditAMount() == 0) {
+                cl.setCreditAMount(Bank.getInitialCredit());
+            }
+        }
         this.displayAccount();
     }
 
@@ -70,7 +76,6 @@ public class PeekAccount extends Bank implements Initializable {
                     credit.setText(String.valueOf(client.getCreditAMount()));
                     debt.setText(String.valueOf(client.getDebtCredit()));
                     monthlyPayment.setText(String.valueOf(client.getMonthlyPayment()));
-                    found = true;
                     break;
                 }
             }

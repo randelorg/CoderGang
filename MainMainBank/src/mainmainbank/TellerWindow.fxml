@@ -24,10 +24,10 @@
         <columns>
           <TableColumn fx:id="col_ID" prefWidth="120.0" text="Account ID" />
           <TableColumn fx:id="col_Firstname" prefWidth="120.0" text="Firstname" />
-            <TableColumn fx:id="col_Middlename" prefWidth="120.0" text="Lastname" />
-            <TableColumn fx:id="col_Lastname" prefWidth="120.0" text="Middlename" />
+            <TableColumn fx:id="col_Middlename" prefWidth="120.0" text="Middlename" />
+            <TableColumn fx:id="col_Lastname" prefWidth="120.0" text="Lastname" />
             <TableColumn fx:id="col_Extensionname" prefWidth="120.0" text="Extension name" />
-            <TableColumn fx:id="col_Peek" prefWidth="136.0" text="Peek" />
+            <TableColumn fx:id="col_Peek" prefWidth="131.0" text="Peek" />
         </columns>
       </TableView>
       <TextField fx:id="omnibox" layoutX="680.0" layoutY="80.0" promptText="Search..">
@@ -40,15 +40,21 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <HBox alignment="CENTER" layoutX="225.0" layoutY="337.0" prefHeight="100.0" prefWidth="543.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="209.0" layoutY="337.0" prefHeight="100.0" prefWidth="569.0" spacing="20.0">
          <children>
             <Button fx:id="btnDeposit" mnemonicParsing="false" onAction="#Deposit" prefHeight="100.0" prefWidth="102.0" text="Deposit" />
             <Button fx:id="btnWithdraw" mnemonicParsing="false" onAction="#Widthdraw" prefHeight="100.0" prefWidth="102.0" text="Withdraw" />
             <Button fx:id="btnPayCredit" mnemonicParsing="false" onAction="#payCredit" prefHeight="100.0" prefWidth="102.0" text="Pay Credit" />
             <Button fx:id="btnViewTransaction" mnemonicParsing="false" onAction="#ViewTranscation" prefHeight="100.0" prefWidth="102.0" text="View &#10;Transaction" textAlignment="CENTER" />
+            <Button fx:id="btnSendFund" mnemonicParsing="false" onAction="#SendFund" prefHeight="100.0" prefWidth="102.0" text="Send Fund" textAlignment="CENTER" />
          </children>
       </HBox>
-      <Button fx:id="btnYourAccount" layoutX="867.0" layoutY="17.0" mnemonicParsing="false" onAction="#RefreshTableData" text="Your Account">
+      <Button fx:id="btnYourAccount" layoutX="778.0" layoutY="17.0" mnemonicParsing="false" onAction="#RefreshTableData" text="Your Account">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLogOut" layoutX="896.0" layoutY="17.0" mnemonicParsing="false" onAction="#RefreshTableData" text="Log Out">
          <font>
             <Font size="15.0" />
          </font>

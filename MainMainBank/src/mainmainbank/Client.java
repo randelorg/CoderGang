@@ -33,6 +33,13 @@ public class Client extends Person {
         this.clientID = clientID;
     }
 
+    public void deductToSavings(double fund){
+        this.savingsAmount -= fund;
+    }
+
+    public void addToSavings(double fund){
+        this.savingsAmount += fund;
+    }
 
     public int getClientID() {
         return clientID;

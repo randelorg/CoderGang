@@ -1,33 +1,42 @@
 package mainmainbank;
 
 public class BankTransactions extends Bank implements IBankTransactions {
-    @Override
-    public void transferFundTruSavings() {
 
+    @Override
+    public int sendFund(String receiverID, double fund) {
+        for (Client cl: Bank.ldClient){
+            if(receiverID.equals(String.valueOf(cl.getClientID()))){
+                cl.addToSavings(fund);
+                return 1;
+            }
+        }
+        return  0;
     }
 
     @Override
-    public void transferFundTruDeposit() {
-
+    public int withdraw(double fund) {
+        for (Client cl: Bank.ldClient){
+            if(Bank.getSessionBackId().equals(String.valueOf(cl.getClientID()))){
+               cl.deductToSavings(fund);
+                return 1;
+            }
+        }
+        return 0;
     }
 
     @Override
-    public void checkSavings() {
-
+    public int deposit(double fund) {
+        for (Client cl: Bank.ldClient){
+            if(Bank.getSessionBackId().equals(String.valueOf(cl.getClientID()))){
+                cl.addToSavings(fund);
+                return 1;
+            }
+        }
+        return 0;
     }
 
     @Override
-    public void withdraw() {
-
-    }
-
-    @Override
-    public void deposit() {
-
-    }
-
-    @Override
-    public void payCredit() {
+    public void payCredit(double fund) {
 
     }
 
