@@ -59,7 +59,13 @@ public class LoginFormController extends Bank implements Initializable {
                         managerWindow.show();
                     break;
                 case 1: //teller
-                        System.out.println("Success");
+                    Parent root1 = FXMLLoader.load(getClass().getResource("TellerWindow.fxml"));
+                    Scene scene1 = new Scene(root1,1034,717);
+                    Stage tellerWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    tellerWindow.setScene(scene1);
+                    tellerWindow.setTitle("Teller window");
+                    tellerWindow.setResizable(false);
+                    tellerWindow.show();
                     break;
                 case -1: //doesnt match
                         this.clearFields();//clears the fields

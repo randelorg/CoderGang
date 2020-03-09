@@ -107,17 +107,14 @@ public class Bank implements IBank{
     }
 
     //stores the current username and password
-    private void Session(String username, String password){
+    private void Session(int ID, String username, String password){
+        Bank.SESSION_ID = String.valueOf(ID);
         Bank.SESSION_USERNAME = username;
         Bank.SESSION_PASSWORD = password;
     }
 
     public static String getSESSION_ID() {
         return SESSION_ID;
-    }
-
-    public static void setSESSION_ID(String aSESSION_ID) {
-        SESSION_ID = aSESSION_ID;
     }
 
     public static String getSESSION_USERNAME() {
@@ -170,13 +167,13 @@ public class Bank implements IBank{
         if(!username.isEmpty() && !password.isEmpty()){
             //for the manager
             if(username.equals(manager.getUsername()) && password.equals(manager.getPassword())){
-                Session(username, password);//stores the username and password of the manager
+                Session(manager.getID(), username, password);//stores the username and password of the manager
                 return 0; //if success
             }else{
                 //for teller
                 for(Teller tel: ldTeller){
                     if(username.equals(tel.getUsername()) && password.equals(tel.getPassword())){
-                        Session(username, password);//stores the username and password of the teller
+                        Session(tel.getTellerID(),username, password);//stores the username and password of the teller
                         return 1;//if success
                     }
                 }

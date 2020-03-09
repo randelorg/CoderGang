@@ -11,8 +11,14 @@ package mainmainbank;
  * @author asus
  */
 public class Manager extends Person{
+
+    private final int ID = 99999999;
     private String username = "randel";
     private String password = "pogi12";
+
+    public int getID() {
+        return ID;
+    }
 
     public String getUsername() {
         return username;
