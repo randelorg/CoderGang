@@ -41,11 +41,6 @@ public class BankTransactions extends Bank implements IBankTransactions {
     }
 
     @Override
-    public void viewCreditDebt() {
-
-    }
-
-    @Override
     public void computeMonthlyPayment() {
 
     }

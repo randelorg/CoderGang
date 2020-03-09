@@ -5,7 +5,6 @@ public interface IBankTransactions {
     int withdraw(double fund);
     int deposit(double fund);
     void payCredit(double fund);
-    void viewCreditDebt();
     void computeMonthlyPayment();
     void computeAddFundToBank();
 }

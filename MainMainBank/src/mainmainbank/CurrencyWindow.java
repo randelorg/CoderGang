@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,16 +40,22 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
                 i = super.deposit(Double.parseDouble(Fund.getText()));
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
+                else//if client is not found
+                    notFound();
                 break;
             case "Withdraw":
                 i = super.withdraw(Double.parseDouble(Fund.getText()));
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
+                else//if client is not found
+                    notFound();
                 break;
             case "SendFund":
                 i = super.sendFund(String.valueOf(tbeceiverID.getText()),Double.parseDouble(Fund.getText()));
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
+                else//if client is not found
+                    notFound();
                 break;
             case "PayCredit":
                 super.payCredit(Double.parseDouble(Fund.getText()));
@@ -63,6 +68,11 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
     private void message(String type){
         JOptionPane.showMessageDialog(null, type + " successful",
                 "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void notFound(){
+        JOptionPane.showMessageDialog(null, "Client not found",
+                "Not found", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void displayID(){
