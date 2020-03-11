@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainmainbank;
+package bankingsystemv2;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.AbstractList;
 import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -109,6 +107,7 @@ public class ManagerWindowController extends Bank implements Initializable {
     @FXML private TableColumn<Client, Double> col_clientDebt;
     @FXML private TableColumn<Client, Void> col_remove1;
     @FXML private TableColumn<Client, Void> col_Peek1;
+    @FXML private TableColumn<Client, Void> col_ViewTransaction;
 
     /**
      * Initializes the controller class.
@@ -204,7 +203,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         }
         
         catch(NumberFormatException e){//bday error
-            JOptionPane.showMessageDialog(null, "Birth date is invalid", "Invalid",
+            JOptionPane.showMessageDialog(null, "Birthdate is invalid", "Invalid",
                             JOptionPane.ERROR_MESSAGE);
         }
         catch(IllegalArgumentException e){//if age is < 18
@@ -284,6 +283,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         tellerFields[3] = tellerLastname.getText();
         tellerFields[4] = tellerExtension.getText();
         tellerFields[5] = String.valueOf(tellerBday.getValue());
+        System.out.println(tellerFields[5]);
         tellerFields[6] = String.valueOf(tellerGender.getValue());
         tellerFields[7] = tellerAddress.getText();
         tellerFields[8] = tellerMaritalStatus.getText();
@@ -295,15 +295,14 @@ public class ManagerWindowController extends Bank implements Initializable {
         tvAccountID.setCellValueFactory(new PropertyValueFactory<>("tellerID"));
         tvFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         tvMiddlename.setCellValueFactory(new PropertyValueFactory<>("middleName"));
-        tbLastName.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        tbLastName.setCellValueFactory(new PropertyValueFactory<>("surname"));
         tbAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         tvAge.setCellValueFactory(new PropertyValueFactory<>("age"));
     }
 
     private void populateTellerTable(){ //add data in the table
         for(Teller tel: Bank.ldTeller){
-            tellers.add(new Teller(tel.getTellerID(), tel.getFirstName(), tel.getMiddleName(),
-                    tel.getLastname() + " " + tel.getExtensionName(), tel.getAddress(), tel.getAge()));
+            tellers.add(tel);
         }
         tableTeller.setItems(tellers);
     }
@@ -377,7 +376,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                         Teller tel = getTableView().getItems().get(getIndex());
                         System.out.println(tel.getTellerID());
                         ManagerWindowController.super.removeTellerACcount(String.valueOf(tel.getTellerID())); //remove the teller account
-                        JOptionPane.showMessageDialog(null, tel.getFirstName() + " " + tel.getLastname() +  " was removed, please refresh the table", "Success",
+                        JOptionPane.showMessageDialog(null, tel.getFirstName() + " " + tel.getSurname() +  " was removed, please refresh the table", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     });
                 }
@@ -443,15 +442,14 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_clientID.setCellValueFactory(new PropertyValueFactory<>("clientID"));
         col_clientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         col_clientMiddleName.setCellValueFactory(new PropertyValueFactory<>("middleName"));
-        col_clientLastName.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        col_clientLastName.setCellValueFactory(new PropertyValueFactory<>("surname"));
         col_clientSavings.setCellValueFactory(new PropertyValueFactory<>("savingsAmount"));
-        col_clientDebt.setCellValueFactory(new PropertyValueFactory<>("debtCredit"));
-}
+        col_clientDebt.setCellValueFactory(new PropertyValueFactory<>(""));
+    }
 
     private void populateClientTable(){ //add data in the table
         for(Client client: Bank.ldClient){
-            clients.add(new Client(client.getClientID(), client.getFirstName(),client.getMiddleName(),client.getLastname() + " " + client.getExtensionName(),
-                client.getSavingsAmount(), client.getDebtCredit()));
+            clients.add(client);
         }
         tableClient.setItems(clients);
     }
@@ -473,6 +471,37 @@ public class ManagerWindowController extends Bank implements Initializable {
         this.refreshDataClient();
     }
 
+    private void viewTransation(){
+        Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = ( TableColumn<Client, Void> param) -> {
+            TableCell<Client, Void> cell = new TableCell<Client, Void>() {
+
+                private final Button btnViewTransaction = new Button("Transaction");
+                {
+                    btnViewTransaction.setOnAction((ActionEvent event) -> {
+                        Client client = getTableView().getItems().get(getIndex());
+                        System.out.println(client.getClientID());
+                        ManagerWindowController.super.removeTellerACcount(String.valueOf(client.getClientID())); //remove the teller account
+                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getSurname() +  " was removed, please refresh the table",
+                                "Success", JOptionPane.INFORMATION_MESSAGE);
+                    });
+                }
+
+                @Override
+                public void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(btnViewTransaction);
+                    }
+                }
+            };
+            return cell;
+        };
+
+        col_ViewTransaction.setCellFactory(cellFactory);
+    }
+
     private void removeClient(){
 
         Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = ( TableColumn<Client, Void> param) -> {
@@ -484,7 +513,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                         Client client = getTableView().getItems().get(getIndex());
                         System.out.println(client.getClientID());
                         ManagerWindowController.super.removeTellerACcount(String.valueOf(client.getClientID())); //remove the teller account
-                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getLastname() +  " was removed, please refresh the table",
+                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getSurname() +  " was removed, please refresh the table",
                                 "Success", JOptionPane.INFORMATION_MESSAGE);
                     });
                 }
@@ -572,7 +601,7 @@ public class ManagerWindowController extends Bank implements Initializable {
 
                 if (teller.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (teller.getLastname().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (teller.getSurname().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else if (String.valueOf(teller.getTellerID()).contains(lowerCaseFilter)) {
                     return true;
@@ -605,7 +634,7 @@ public class ManagerWindowController extends Bank implements Initializable {
 
                 if (client.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (client.getLastname().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (client.getSurname().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else if (String.valueOf(client.getClientID()).contains(lowerCaseFilter)) {
                     return true;

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="414.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankingsystemv2.TransactionsWindow">
+   <children>
+      <TableView fx:id="tableTransaction" layoutX="46.0" layoutY="128.0" prefHeight="200.0" prefWidth="604.0">
+        <columns>
+          <TableColumn fx:id="col_TranName" prefWidth="150.0" text="Transaction Name" />
+          <TableColumn fx:id="col_Amount" prefWidth="150.0" text="Amount" />
+            <TableColumn fx:id="col_TranType" prefWidth="150.0" text="Trsansaction Type" />
+            <TableColumn fx:id="col_DateTime" prefWidth="150.0" text="Date and Time" />
+        </columns>
+      </TableView>
+      <Label layoutX="46.0" layoutY="38.0" text="Account ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbID" layoutX="225.0" layoutY="38.0" prefHeight="30.0" prefWidth="233.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTransaction" layoutX="225.0" layoutY="68.0" prefHeight="30.0" prefWidth="233.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="68.0" text="Transaction Type">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

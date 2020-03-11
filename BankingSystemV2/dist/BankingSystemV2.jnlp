@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="BankingSystemV2.jnlp">
+  <information>
+    <title>BankingSystemV2</title>
+    <vendor>Ivan N. Roncesvalles</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="BankingSystemV2.jar" size="58675" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="bankingsystemv2.BankingSystemV2"  name="BankingSystemV2" />
+  <update check="always"/>
+</jnlp>
