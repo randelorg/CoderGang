@@ -6,4 +6,5 @@ public interface IBankTransactions {
     int deposit(double fund);
     void payCredit(double fund);
     void computeAddFundToBank();
+    void AddIntialCredits();
 }

@@ -15,9 +15,9 @@ import java.util.Random;
 public class Client extends Person
 {  
     private String clientID ;
-    private double creditLimit = 0.0;
-    private double savingsBalance = 0.0;
-    private double creditBalance = 0.0;
+    private double creditLimit;
+    private double savingsBalance;
+    private double creditBalance;
 
     public double getTOTAL_DEBIT() {
         return TOTAL_DEBIT;

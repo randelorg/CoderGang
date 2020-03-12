@@ -122,7 +122,7 @@ public class ManagerWindowController extends Bank implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initGenders();
-        //initSettings();
+        initSettings();
         initDefault();
         initGeneratorID();
     }
@@ -467,6 +467,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         if(!Bank.ldClient.isEmpty()){
             this.removeClient(); //add remove button
             this.peekClient(); //peek button
+            viewTransation(); //view transacion button
         }
         this.refreshDataClient();
     }
@@ -479,10 +480,17 @@ public class ManagerWindowController extends Bank implements Initializable {
                 {
                     btnViewTransaction.setOnAction((ActionEvent event) -> {
                         Client client = getTableView().getItems().get(getIndex());
-                        System.out.println(client.getClientID());
-                        ManagerWindowController.super.removeTellerACcount(String.valueOf(client.getClientID())); //remove the teller account
-                        JOptionPane.showMessageDialog(null, client.getFirstName() + " " + client.getSurname() +  " was removed, please refresh the table",
-                                "Success", JOptionPane.INFORMATION_MESSAGE);
+                        //System.out.println(client.getClientID());
+                        Bank.setSessionBackId(client.getClientID());
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TransactionsWindow.fxml"));
+                            Parent root1 = (Parent) fxmlLoader.load();
+                            Stage transactionWindow = new Stage();
+                            transactionWindow.setScene(new Scene(root1));
+                            transactionWindow.setResizable(false);
+                            transactionWindow.show();
+                        }
+                        catch (IOException e){e.printStackTrace();}
                     });
                 }
 

@@ -53,4 +53,13 @@ public class BankTransactions extends Bank implements IBankTransactions {
     public void computeAddFundToBank() {
         
     }
+
+    @Override
+    public void AddIntialCredits() {
+        for(Client cl: Bank.ldClient){
+            if(cl.getCreditBalance() <= 0){
+                cl.setCreditBalance(Bank.getInitialCredit());
+            }
+        }
+    }
 }
