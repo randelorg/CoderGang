@@ -33,15 +33,15 @@ public class CreditTransaction {
         return this.transactionDate;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return this.amount;
     }
 
-    public Double getInterestRate() {
+    public double getInterestRate() {
         return this.interestRate;
     }
     
-    public Double getTotal()
+    public double getTotal()
     {
         String[] MMDDYY = this.transactionDate.split(Pattern.quote("/"));
         String[] YEAR_AND_TIME = MMDDYY[2].split(" ");

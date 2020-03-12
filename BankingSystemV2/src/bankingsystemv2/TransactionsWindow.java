@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 public class TransactionsWindow extends TellerWindow implements Initializable {
 
     private final ObservableList<TransactionHistory> transac = FXCollections.observableArrayList();
+    private final ObservableList<CreditTransaction> debit = FXCollections.observableArrayList();
+    //for transaction history
     @FXML private Label lbID;
     @FXML private TableView<TransactionHistory> tableTransaction;
     @FXML private TableColumn<TransactionHistory, String> col_TranName;
@@ -22,6 +24,14 @@ public class TransactionsWindow extends TellerWindow implements Initializable {
     @FXML private TableColumn<TransactionHistory, String>  col_TranType;
     @FXML private TableColumn<TransactionHistory, String> col_DateTime;
     @FXML private Label lbTransaction;
+
+    //for Credit Transaction
+    @FXML private TableView<CreditTransaction> tableCreditLoan;
+    @FXML private TableColumn<CreditTransaction, String> dateColumn;
+    @FXML private TableColumn<CreditTransaction, Double> amountColumn;
+    @FXML private TableColumn<CreditTransaction, Double>  interestColumn;
+    @FXML private TableColumn<CreditTransaction, Double> totalColumn;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,6 +52,11 @@ public class TransactionsWindow extends TellerWindow implements Initializable {
         col_Amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         col_TranType.setCellValueFactory(new PropertyValueFactory<>("transactionType"));
         col_DateTime.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("transactionDate"));
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        interestColumn.setCellValueFactory(new PropertyValueFactory<>("interestRate"));
+        totalColumn.setCellValueFactory(new PropertyValueFactory<>("total"));
     }
 
     private void populateClientTable(){ //add data in the table
@@ -56,5 +71,20 @@ public class TransactionsWindow extends TellerWindow implements Initializable {
             }
         }
         tableTransaction.setItems(transac);
+
+        //for credit table
+
+        for(Client c : Bank.ldClient)
+        {
+            if(c.getClientID().equals(Bank.getSessionBackId()))
+            {
+                for(CreditTransaction ct: c.getCreditAL())
+                {
+                    debit.add(ct);
+                }
+            }
+        }
+
+        tableCreditLoan.setItems(debit);
     }
 }

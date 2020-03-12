@@ -45,21 +45,17 @@ public class BankTransactions extends Bank implements IBankTransactions {
     }
 
     @Override
-    public void payCredit(double fund) {
-
-    }
-
-    @Override
-    public void computeAddFundToBank() {
-        
-    }
-
-    @Override
-    public void AddIntialCredits() {
-        for(Client cl: Bank.ldClient){
-            if(cl.getCreditBalance() <= 0){
-                cl.setCreditBalance(Bank.getInitialCredit());
+    public int payCredit(double fund) {
+        for (Client cl: Bank.ldClient){
+            if(Bank.getSessionBackId().equals(String.valueOf(cl.getClientID()))){
+                cl.getCreditAL().add(new CreditTransaction(String.valueOf(LocalDateTime.now()), fund, Bank.getINTEREST()));
+                cl.computeTotalDebit(); // compute the total debt of the client
+                cl.deductToDebt(fund); // deducts the paid amount to the total debt
+                Bank.AddBankNetAmount(fund); //add the paid amount to the bank net fund
+                cl.computeCreditBalance(); // computes the credit available credit balance
+                return 1;
             }
         }
+        return 0;
     }
 }

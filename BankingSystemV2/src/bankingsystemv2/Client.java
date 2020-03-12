@@ -15,26 +15,22 @@ import java.util.Random;
 public class Client extends Person
 {  
     private String clientID ;
-    private double creditLimit;
-    private double savingsBalance;
-    private double creditBalance;
+    private double creditLimit = 0;
+    private double savingsBalance = 0;
+    private double creditBalance = 0;
+    private double TOTAL_DEBIT = 0;
 
     public double getTOTAL_DEBIT() {
         return TOTAL_DEBIT;
     }
-
     public void setTOTAL_DEBIT(double TOTAL_DEBIT) {
         this.TOTAL_DEBIT = TOTAL_DEBIT;
     }
-
-    private double TOTAL_DEBIT = 0;
-    
     private ArrayList<TransactionHistory> transacAL = new ArrayList<>();
     private ArrayList<CreditTransaction> creditAL = new ArrayList<>();
     
-    public Client(){
-        
-    }
+    public Client(){ }
+
     public Client(Double creditLimit, Double savingsBalance)
     {
         super();
@@ -61,25 +57,43 @@ public class Client extends Person
     {
         this.clientID = id.toString();
     }
-
     public void deductToSavings(double fund){
         this.savingsBalance -= fund;
     }
-
     public void addToSavings(double fund){
         this.savingsBalance += fund;
     }
-    
     public void addTransaction(TransactionHistory th)
     {
         transacAL.add(th);
     }
-    
     public void addCreditTransaction(CreditTransaction ct)
     {
         creditAL.add(ct);
     }
-
+    public String getClientID() {
+        return this.clientID;
+    }
+    public Double getSavingsBalance() {
+        return this.savingsBalance;
+    }
+    public ArrayList<TransactionHistory> getTransacAL() {
+        return this.transacAL;
+    }
+    public ArrayList<CreditTransaction> getCreditAL() {
+        return this.creditAL;
+    }
+    public void setCreditLimit(Double creditLimit) {
+        this.creditLimit = creditLimit;
+    }
+    public Double getCreditLimit(){return this.creditLimit;}
+    public void setSavingsBalance(Double savingsBalance) {
+        this.savingsBalance = savingsBalance;
+    }
+    public void setCreditBalance(Double creditBalance) {
+        this.creditBalance = creditBalance;
+    }
+    public Double getCreditBalance(){return this.creditBalance;}
     
     public void settleCreditTransaction(String date, Double amount)
     {
@@ -91,16 +105,6 @@ public class Client extends Person
             }
         }
     }
-    
-    public String getClientID() {
-        return this.clientID;
-    }
-
-    public Double getSavingsBalance() {
-        return this.savingsBalance;
-    }
-
-
 
     public void computeCreditBalance() {
         for(CreditTransaction a: creditAL)
@@ -117,29 +121,8 @@ public class Client extends Person
         }
     }
 
-    public ArrayList<TransactionHistory> getTransacAL() {
-        return this.transacAL;
+    public void deductToDebt(double fund){
+        this.TOTAL_DEBIT -= fund;
     }
-
-    public ArrayList<CreditTransaction> getCreditAL() {
-        return this.creditAL;
-    }
-
-    public void setCreditLimit(Double creditLimit) {
-        this.creditLimit = creditLimit;
-    }
-
-    public Double getCreditLimit(){return this.creditLimit;}
-
-    public void setSavingsBalance(Double savingsBalance) {
-        this.savingsBalance = savingsBalance;
-    }
-
-    public void setCreditBalance(Double creditBalance) {
-        this.creditBalance = creditBalance;
-    }
-
-    public Double getCreditBalance(){return this.creditBalance;}
-    
     
 }

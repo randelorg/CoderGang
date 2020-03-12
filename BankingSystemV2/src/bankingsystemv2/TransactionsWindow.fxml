@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="414.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankingsystemv2.TransactionsWindow">
+<AnchorPane prefHeight="627.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankingsystemv2.TransactionsWindow">
    <children>
-      <TableView fx:id="tableTransaction" layoutX="46.0" layoutY="128.0" prefHeight="200.0" prefWidth="604.0">
+      <TableView fx:id="tableTransaction" layoutX="46.0" layoutY="127.0" prefHeight="200.0" prefWidth="604.0">
         <columns>
           <TableColumn fx:id="col_TranName" prefWidth="150.0" text="Transaction Name" />
           <TableColumn fx:id="col_Amount" prefWidth="150.0" text="Amount" />
@@ -36,5 +36,13 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <TableView fx:id="tableCreditLoan" layoutX="49.0" layoutY="385.0" prefHeight="200.0" prefWidth="604.0">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="144.0" text="Date and Time" />
+          <TableColumn fx:id="amountColumn" minWidth="9.0" prefWidth="157.0" text="Amount" />
+            <TableColumn fx:id="interestColumn" prefWidth="158.0" text="Interest Rate" />
+            <TableColumn fx:id="totalColumn" prefWidth="144.0" text="Total" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

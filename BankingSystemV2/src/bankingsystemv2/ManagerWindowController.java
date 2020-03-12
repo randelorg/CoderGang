@@ -135,8 +135,17 @@ public class ManagerWindowController extends Bank implements Initializable {
         setMinWithdraw.setText(String.valueOf(Bank.getMIN_WITHDRWAl()));
         setInterest.setText(String.valueOf(Bank.getINTEREST()));
         setMaxWithdraw.setText(String.valueOf(Bank.getMaxWithdrawal()));
+        AddClientCredit(); //add the initial credit for new clients who have 0 credit balance
     }
-    
+
+    private void AddClientCredit(){
+        for(Client cl: Bank.ldClient){
+            if(cl.getCreditBalance() <= 0){
+                cl.setCreditBalance(Bank.getInitialCredit());
+            }
+        }
+    }
+
     private void initGenders(){
         gender.setItems(genders);
         tellerGender.setItems(genders);
@@ -165,7 +174,8 @@ public class ManagerWindowController extends Bank implements Initializable {
             Bank.setMaintainingBalance(Double.parseDouble(setMaintainingBalance.getText()));
             Bank.setInitialCredit(Double.parseDouble(setInitialCredit.getText()));
             System.out.println(Bank.getInitialCredit());
-
+            AddClientCredit(); //adds the initial credit to those clients who has 0 credit balance
+            System.out.println("OKKOKOKOKOK");
             JOptionPane.showMessageDialog(null, "All setters are saved in the system", "Saved",
                             JOptionPane.INFORMATION_MESSAGE);
         }
@@ -192,6 +202,7 @@ public class ManagerWindowController extends Bank implements Initializable {
             }
 
             String status = super.createAccountClient(clientFields);
+            AddClientCredit(); //adds the initial credit to those clients who has 0 credit balance
 
             if(status.equals("Declined"))//when client age is < 18
                 throw new IllegalArgumentException();
@@ -443,8 +454,8 @@ public class ManagerWindowController extends Bank implements Initializable {
         col_clientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         col_clientMiddleName.setCellValueFactory(new PropertyValueFactory<>("middleName"));
         col_clientLastName.setCellValueFactory(new PropertyValueFactory<>("surname"));
-        col_clientSavings.setCellValueFactory(new PropertyValueFactory<>("savingsAmount"));
-        col_clientDebt.setCellValueFactory(new PropertyValueFactory<>(""));
+        col_clientSavings.setCellValueFactory(new PropertyValueFactory<>("savingsBalance"));
+        col_clientDebt.setCellValueFactory(new PropertyValueFactory<>("TOTAL_DEBIT"));
     }
 
     private void populateClientTable(){ //add data in the table
@@ -487,7 +498,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                             Parent root1 = (Parent) fxmlLoader.load();
                             Stage transactionWindow = new Stage();
                             transactionWindow.setScene(new Scene(root1));
-                            transactionWindow.setResizable(false);
+                            //transactionWindow.setResizable(false);
                             transactionWindow.show();
                         }
                         catch (IOException e){e.printStackTrace();}

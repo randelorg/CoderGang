@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0f4a791-2b65-43d4-9f9f-5c1fe730ae42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Clients.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Clients.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Credits.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Credits.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Transactions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/LoginFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/LoginFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/BankTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/BankTransactions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/CreditTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/CreditTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/CurrencyWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/CurrencyWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/IBankTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/IBankTransactions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/LoginFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/TransactionsWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/TransactionsWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/TransactionsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/TransactionsWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,12 +78,25 @@
       <updated>1583944530092</updated>
       <workItem from="1583944533558" duration="4795000" />
       <workItem from="1583950083845" duration="5257000" />
-      <workItem from="1583991183003" duration="1841000" />
+      <workItem from="1583991183003" duration="1895000" />
+      <workItem from="1583996227653" duration="7314000" />
     </task>
+    <task id="LOCAL-00001" summary="added caption to the transaction column">
+      <created>1583993062323</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583993062323</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added caption to the transaction column" />
+    <option name="LAST_COMMIT_MESSAGE" value="added caption to the transaction column" />
   </component>
   <component name="WindowStateProjectService">
     <state x="429" y="146" key="#com.intellij.ide.util.MemberChooser" timestamp="1583991916201">
@@ -85,34 +104,42 @@
     </state>
     <state x="429" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1583991916201" />
     <state x="2250" y="529" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583947681483" />
-    <state width="1322" height="164" key="GridCell.Tab.0.bottom" timestamp="1583991858081">
+    <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1583993058460">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583991858081" />
+    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1583993058460" />
+    <state width="1322" height="164" key="GridCell.Tab.0.bottom" timestamp="1584003573042">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="164" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584003573042" />
     <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1583955346976" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796341" />
-    <state width="1322" height="164" key="GridCell.Tab.0.center" timestamp="1583991858081">
+    <state width="1322" height="164" key="GridCell.Tab.0.center" timestamp="1584003573042">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583991858081" />
+    <state width="1322" height="164" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584003573042" />
     <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1583955346975" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796341" />
-    <state width="1322" height="164" key="GridCell.Tab.0.left" timestamp="1583991858081">
+    <state width="1322" height="164" key="GridCell.Tab.0.left" timestamp="1584003573042">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583991858081" />
+    <state width="1322" height="164" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584003573042" />
     <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1583955346975" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796340" />
-    <state width="1322" height="164" key="GridCell.Tab.0.right" timestamp="1583991858081">
+    <state width="1322" height="164" key="GridCell.Tab.0.right" timestamp="1584003573042">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583991858081" />
+    <state width="1322" height="164" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584003573042" />
     <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1583955346976" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796341" />
-    <state x="467" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1583991184826">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1583993066342">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="467" y="240" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583991184825" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583993066342" />
+    <state x="467" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1583996247603">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="467" y="240" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583996247603" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583944536801" />
     <state x="1920" y="26" width="1066" height="718" maximized="true" key="dock-window-1" timestamp="1583944961097">
       <screen x="1920" y="26" width="1050" height="1640" />

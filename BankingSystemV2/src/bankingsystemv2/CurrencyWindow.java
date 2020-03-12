@@ -60,7 +60,11 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
                     notFound();
                 break;
             case "PayCredit":
-                super.payCredit(getFund());
+                i = super.payCredit(getFund());
+                if(i == 1)
+                    message(TellerWindow.getTransactionType());
+                else//if client is not found
+                    notFound();
                 break;
             case "Transaction":
                 break;

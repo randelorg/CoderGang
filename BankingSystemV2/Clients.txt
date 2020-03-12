@@ -1,2 +1,5 @@
 asd|asd|asd| |asd|null|asd|Male|1998-04-22|1000.00|0.00|55080039|asd
 wopowp|asd|asd| |asd|null|asd|Male|1998-04-22|1000.00|23000.00|91370254|asd
+Randel|Pelagio|Reyes| |asd|null|ads|Male|1998-04-22|500.00|10000.00|14311705|asd
+ONG|Pelagio|Reyes| |asd|null|ads|Male|1998-04-22|500.00|0.00|63846639|asd
+asd|ads|da| |ads|null|ads|Male|1998-04-22|0.00|0.00|27696330|asd
