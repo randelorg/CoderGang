@@ -7,6 +7,7 @@
  */
 package bankingsystemv2;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -43,12 +44,16 @@ public class CreditTransaction {
     
     public double getTotal()
     {
-        String[] MMDDYY = this.transactionDate.split(Pattern.quote("/"));
-        String[] YEAR_AND_TIME = MMDDYY[2].split(" ");
-        LocalDate startDate = LocalDate.of(Integer.valueOf(YEAR_AND_TIME[0]), Integer.valueOf(MMDDYY[0]), Integer.valueOf(MMDDYY[1]));
+        String[] MMDDYY = this.transactionDate.split(Pattern.quote("-"));
+        System.out.println(this.transactionDate);
+        System.out.println("1 " + MMDDYY[0]);
+        System.out.println("2 " + MMDDYY[1]);
+        System.out.println("3 " + MMDDYY[2]);
+        String[] YEAR_AND_TIME = MMDDYY[2].split("T");
+        LocalDate startDate = LocalDate.of(Integer.valueOf(YEAR_AND_TIME[1]), Integer.valueOf(MMDDYY[0]), Integer.valueOf(MMDDYY[1]));
         LocalDate now = LocalDate.now();
         Period period = Period.between(startDate, now);
-        Double interest = this.amount * (this.interestRate / 100);
+        double interest = this.amount * (Bank.getINTEREST() / 100);
         total = interest * period.getDays() + this.amount;
         return total;
     }
