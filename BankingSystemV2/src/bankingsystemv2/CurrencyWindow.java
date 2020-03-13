@@ -77,7 +77,7 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
                 else if (i == 2)
-                    JOptionPane.showMessageDialog(null, "Fund is greater than the savings",
+                    JOptionPane.showMessageDialog(null, "Fund is greater than the credit",
                             "Exceed", JOptionPane.INFORMATION_MESSAGE);
                 else//if client is not found
                     notFound();

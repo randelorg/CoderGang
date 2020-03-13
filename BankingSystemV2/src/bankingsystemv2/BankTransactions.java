@@ -64,10 +64,10 @@ public class BankTransactions extends Bank implements IBankTransactions {
         for (Client cl: Bank.ldClient){
             if(Bank.getSessionBackId().equals(String.valueOf(cl.getClientID()))){
                 cl.getCreditAL().add(new CreditTransaction(String.valueOf(LocalDateTime.now()), fund, Bank.getINTEREST()));
-                cl.computeTotalDebit(); // compute the total debt of the client
+                //cl.computeTotalDebit(); // compute the total debt of the client
                 cl.deductToDebt(fund); // deducts the paid amount to the total debt
                 Bank.AddBankNetAmount(fund); //add the paid amount to the bank net fund
-                cl.computeCreditBalance(); // computes the credit available credit balance
+                //cl.computeCreditBalance(); // computes the credit available credit balance
                 return 1;
             }
         }
@@ -80,7 +80,7 @@ public class BankTransactions extends Bank implements IBankTransactions {
         for (Client cl: Bank.ldClient){
             if(Bank.getSessionBackId().equals(String.valueOf(cl.getClientID())))
             {
-                if(fund <= cl.getSavingsBalance()) {
+                if(fund <= cl.getCreditBalance()) {
                     cl.getCreditAL().add(new CreditTransaction(String.valueOf(LocalDateTime.now()), fund, Bank.getINTEREST()));
 //                    cl.computeCreditBalance();
                     cl.deductToCreditBalance(fund); //deducts the fund to the total credit balance
