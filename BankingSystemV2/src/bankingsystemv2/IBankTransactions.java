@@ -5,4 +5,5 @@ public interface IBankTransactions {
     int withdraw(double fund);
     int deposit(double fund);
     int payCredit(double fund);
+    int withdrawCredit(double fund);
 }

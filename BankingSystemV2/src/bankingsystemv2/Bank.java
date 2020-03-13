@@ -260,7 +260,7 @@ public class Bank implements IBank{
 
     @Override //for manager
     public void removeClientAccount() {
-        
+        //empty
     }
 
     @Override //for manager

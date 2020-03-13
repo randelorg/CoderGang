@@ -3,22 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="d0f4a791-2b65-43d4-9f9f-5c1fe730ae42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clients.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Clients.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Credits.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Credits.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Transactions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/BankTransactions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/BankTransactions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/CreditTransaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/CreditTransaction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/CurrencyWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/CurrencyWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/Files.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/IBankTransactions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/IBankTransactions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/ManagerWindowController$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/TransactionsWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/TransactionsWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/TransactionsWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/TransactionsWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/TellerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankingSystemV2/bankingsystemv2/TellerWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/BankTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/BankTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/CreditTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/CreditTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/CurrencyWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/CurrencyWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/IBankTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/IBankTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/ManagerWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/TellerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/TellerWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bankingsystemv2/TellerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankingsystemv2/TellerWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +84,10 @@
       <workItem from="1583950083845" duration="5257000" />
       <workItem from="1583991183003" duration="1895000" />
       <workItem from="1583996227653" duration="7418000" />
-      <workItem from="1584007142756" duration="1580000" />
+      <workItem from="1584007142756" duration="1631000" />
+      <workItem from="1584029241088" duration="3369000" />
+      <workItem from="1584060666362" duration="2501000" />
+      <workItem from="1584069502126" duration="7228000" />
     </task>
     <task id="LOCAL-00001" summary="added caption to the transaction column">
       <created>1583993062323</created>
@@ -98,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584003608478</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="workwork">
+      <created>1584009711411</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584009711411</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,54 +119,67 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added caption to the transaction column" />
     <MESSAGE value="work on date in credit add up" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on date in credit add up" />
+    <MESSAGE value="workwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="workwork" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="429" y="146" key="#com.intellij.ide.util.MemberChooser" timestamp="1583991916201">
+    <state x="429" y="146" key="#com.intellij.ide.util.MemberChooser" timestamp="1584073755423">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="429" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1583991916201" />
+    <state x="429" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1584073755423" />
     <state x="2250" y="529" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583947681483" />
-    <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1584003606525">
+    <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1584009709364">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584003606525" />
-    <state width="1322" height="164" key="GridCell.Tab.0.bottom" timestamp="1584007878726">
+    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584009709364" />
+    <state x="427" y="0" key="Diagram.Print.Preview.Dialog" timestamp="1584061932284">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584007878726" />
+    <state x="427" y="0" key="Diagram.Print.Preview.Dialog/0.0.1366.728@0.0.1366.728" timestamp="1584061932284" />
+    <state x="463" y="90" key="FileChooserDialogImpl" timestamp="1584061986444">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="90" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584061986444" />
+    <state width="1322" height="164" key="GridCell.Tab.0.bottom" timestamp="1584076746604">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="164" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584076746604" />
     <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1583955346976" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796341" />
-    <state width="1322" height="164" key="GridCell.Tab.0.center" timestamp="1584007878726">
+    <state width="1322" height="164" key="GridCell.Tab.0.center" timestamp="1584076746604">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584007878726" />
+    <state width="1322" height="164" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584076746604" />
     <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1583955346975" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796341" />
-    <state width="1322" height="164" key="GridCell.Tab.0.left" timestamp="1584007878725">
+    <state width="1322" height="164" key="GridCell.Tab.0.left" timestamp="1584076746603">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584007878725" />
+    <state width="1322" height="164" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584076746603" />
     <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1583955346975" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796340" />
-    <state width="1322" height="164" key="GridCell.Tab.0.right" timestamp="1584007878726">
+    <state width="1322" height="164" key="GridCell.Tab.0.right" timestamp="1584076746604">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="164" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584007878726" />
+    <state width="1322" height="164" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584076746604" />
     <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1583955346976" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583948796341" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1584003611530">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1584009721316">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1584003611530" />
-    <state x="467" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1584007144971">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1584009721316" />
+    <state x="467" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1584069509990">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="467" y="240" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584007144971" />
+    <state x="467" y="240" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584069509990" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583944536801" />
     <state x="1920" y="26" width="1066" height="718" maximized="true" key="dock-window-1" timestamp="1583944961097">
       <screen x="1920" y="26" width="1050" height="1640" />
     </state>
     <state x="1920" y="26" width="1066" height="718" maximized="true" key="dock-window-1/0.0.1920.1040/1920.26.1050.1640@0.0.1920.1040" timestamp="1583944961097" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1584029399455">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1584029399455" />
   </component>
 </project>

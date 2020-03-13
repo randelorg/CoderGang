@@ -42,14 +42,20 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
                 i = super.deposit(getFund());
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
-                else//if client is not found
+                else if(i == 2) { //if client has 0 savings balances
+                    JOptionPane.showMessageDialog(null, "Please deposit " + Bank.getInitialDeposit(),
+                            "Initial Deposit", JOptionPane.INFORMATION_MESSAGE);
+                }else //if client not found
                     notFound();
                 break;
             case "Withdraw":
                 i = super.withdraw(getFund());
                 if(i == 1)
                     message(TellerWindow.getTransactionType());
-                else//if client is not found
+                else if (i == 2)
+                    JOptionPane.showMessageDialog(null, "Fund is greater than the savings",
+                            "Exceed", JOptionPane.INFORMATION_MESSAGE);
+                else //if client is not found
                     notFound();
                 break;
             case "SendFund":
@@ -66,7 +72,15 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
                 else//if client is not found
                     notFound();
                 break;
-            case "Transaction":
+            case "WithdrawCredit":
+                i = super.withdrawCredit(getFund());
+                if(i == 1)
+                    message(TellerWindow.getTransactionType());
+                else if (i == 2)
+                    JOptionPane.showMessageDialog(null, "Fund is greater than the savings",
+                            "Exceed", JOptionPane.INFORMATION_MESSAGE);
+                else//if client is not found
+                    notFound();
                 break;
         }
     }
@@ -104,11 +118,16 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
     }
 
     private void displayID(){
-        for(Client client: Bank.ldClient){
-            if (Bank.getSessionBackId().equals(String.valueOf(client.getClientID()))){
-                lbAccountID.setText("Account ID " + String.valueOf(client.getClientID()));
-                break;
+        try {
+            for (Client client : Bank.ldClient) {
+                if (Bank.getSessionBackId().equals(String.valueOf(client.getClientID()))) {
+                    lbAccountID.setText("Account ID " + String.valueOf(client.getClientID()));
+                    break;
+                }
             }
+        }
+        catch (NullPointerException e) {
+            System.out.println("Empty session ID");
         }
     }
 
@@ -116,6 +135,5 @@ public class CurrencyWindow extends TellerWindow implements Initializable {
     private void ProcessCurrency(ActionEvent event) {
         this.transactionsName();
     }
-
 
 }

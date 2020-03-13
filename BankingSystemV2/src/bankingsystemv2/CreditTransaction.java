@@ -7,6 +7,8 @@
  */
 package bankingsystemv2;
 
+import com.sun.xml.internal.ws.addressing.WsaActionUtil;
+
 import javax.xml.bind.SchemaOutputResolver;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -27,7 +29,8 @@ public class CreditTransaction {
     public CreditTransaction(String date, Double amount, Double interestRate) {
         this.transactionDate = date;
         this.amount = amount;
-        this.interestRate = interestRate;
+        //this.interestRate = interestRate;
+        this.interestRate = Bank.getINTEREST();
     }
 
     public String getTransactionDate() {
@@ -44,17 +47,26 @@ public class CreditTransaction {
     
     public double getTotal()
     {
-        String[] MMDDYY = this.transactionDate.split(Pattern.quote("-"));
-        System.out.println(this.transactionDate);
-        System.out.println("1 " + MMDDYY[0]);
-        System.out.println("2 " + MMDDYY[1]);
-        System.out.println("3 " + MMDDYY[2]);
-        String[] YEAR_AND_TIME = MMDDYY[2].split("T");
-        LocalDate startDate = LocalDate.of(Integer.valueOf(YEAR_AND_TIME[1]), Integer.valueOf(MMDDYY[0]), Integer.valueOf(MMDDYY[1]));
-        LocalDate now = LocalDate.now();
-        Period period = Period.between(startDate, now);
-        double interest = this.amount * (Bank.getINTEREST() / 100);
-        total = interest * period.getDays() + this.amount;
-        return total;
+        try {
+            String[] DATE = this.transactionDate.split(Pattern.quote("T"));
+            String[] MMDDYY = DATE[0].split("-");
+//            System.out.println(this.transactionDate);
+            LocalDate startDate = LocalDate.of(Integer.valueOf(MMDDYY[0]), Integer.valueOf(MMDDYY[1]), Integer.valueOf(MMDDYY[2]));
+            LocalDate now = LocalDate.now();
+            Period period = Period.between(startDate, now);
+            double interest = this.amount * (Bank.getINTEREST() / 100);
+            total = interest * period.getDays() + this.amount;
+            return total;
+        }
+
+        catch (NumberFormatException e){
+            System.out.println("Invalid time and date");
+        }
+
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Too much array size");
+        }
+
+        return 0;
     }
 }

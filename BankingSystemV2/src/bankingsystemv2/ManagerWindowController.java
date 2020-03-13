@@ -478,7 +478,7 @@ public class ManagerWindowController extends Bank implements Initializable {
         if(!Bank.ldClient.isEmpty()){
             this.removeClient(); //add remove button
             this.peekClient(); //peek button
-            viewTransation(); //view transacion button
+            this.viewTransation(); //view transaction button
         }
         this.refreshDataClient();
     }
@@ -498,7 +498,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                             Parent root1 = (Parent) fxmlLoader.load();
                             Stage transactionWindow = new Stage();
                             transactionWindow.setScene(new Scene(root1));
-                            //transactionWindow.setResizable(false);
+                            transactionWindow.setResizable(false);
                             transactionWindow.show();
                         }
                         catch (IOException e){e.printStackTrace();}
@@ -526,9 +526,9 @@ public class ManagerWindowController extends Bank implements Initializable {
         Callback<TableColumn<Client, Void>, TableCell<Client, Void>> cellFactory = ( TableColumn<Client, Void> param) -> {
             TableCell<Client, Void> cell = new TableCell<Client, Void>() {
 
-                private final Button btnRemove = new Button("Remove");
+                private final Button btnDisable = new Button("Disable");
                 {
-                    btnRemove.setOnAction((ActionEvent event) -> {
+                    btnDisable.setOnAction((ActionEvent event) -> {
                         Client client = getTableView().getItems().get(getIndex());
                         System.out.println(client.getClientID());
                         ManagerWindowController.super.removeTellerACcount(String.valueOf(client.getClientID())); //remove the teller account
@@ -543,7 +543,7 @@ public class ManagerWindowController extends Bank implements Initializable {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(btnRemove);
+                        setGraphic(btnDisable);
                     }
                 }
             };

@@ -113,7 +113,7 @@ public class Client extends Person
         }
         this.creditBalance -= TOTAL_DEBIT;
     }
-    
+
     public void computeTotalDebit() {
         for(CreditTransaction a: creditAL)
         {
@@ -121,6 +121,7 @@ public class Client extends Person
         }
     }
 
+    public void deductToCreditBalance(double fund){this.creditBalance-= fund;}
     public void deductToDebt(double fund){
         this.TOTAL_DEBIT -= fund;
     }
